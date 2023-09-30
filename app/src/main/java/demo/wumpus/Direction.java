@@ -15,5 +15,7 @@ public class Direction {
     return currentDirection;
   }
 
-
+  public void turnLeft() {
+    currentDirection = Directions.Left;
+  }
 }

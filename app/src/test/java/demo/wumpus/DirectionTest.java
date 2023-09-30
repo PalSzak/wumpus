@@ -11,4 +11,11 @@ public class DirectionTest {
     Assertions.assertEquals(Direction.Directions.Up, direction.getCurrentDirection(), "Default direction is Up");
   }
 
+  @Test
+  public void canTurnLeft() {
+    Direction direction = new Direction();
+    direction.turnLeft();
+    Assertions.assertEquals(Direction.Directions.Left, direction.getCurrentDirection());
+  }
+
 }
