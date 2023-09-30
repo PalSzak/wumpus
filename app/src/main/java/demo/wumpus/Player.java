@@ -1,19 +1,23 @@
 package demo.wumpus;
 
 public class Player {
-  ImmputableCoord position;
+  Coord position;
   Direction faceDirection;
 
-  public Player(ImmputableCoord startPosition) {
+  public Player(Coord startPosition) {
     position = startPosition;
     faceDirection = new Direction();
   }
 
-  public ImmputableCoord move() {
+  public Coord move() {
     return position.getNeighbour(faceDirection.getCurrentDirection());
   }
 
   public void turnLeft() {
     faceDirection.turnLeft();
+  }
+
+  public void turnRight() {
+    faceDirection.turnRight();
   }
 }

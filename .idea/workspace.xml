@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/ImmputableCoord.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Coord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/PlayerTest.java" afterDir="false" />
     </list>
@@ -65,31 +66,7 @@
     &quot;last_opened_file_path&quot;: &quot;/home/fern/projects/wumpus&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.PlayerTest.playerCanTurnLeft">
-    <configuration name="DirectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;demo.wumpus.DirectionTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Gradle.PlayerTest.playerCanTurnRight">
     <configuration name="PlayerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -162,6 +139,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="PlayerTest.playerCanTurnRight" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;demo.wumpus.PlayerTest.playerCanTurnRight&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="PlayerTest.startPositionIs00" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -188,11 +189,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PlayerTest.playerCanTurnRight" />
         <item itemvalue="Gradle.PlayerTest.playerCanTurnLeft" />
         <item itemvalue="Gradle.PlayerTest" />
         <item itemvalue="Gradle.PlayerTest.playerCanMove" />
         <item itemvalue="Gradle.PlayerTest.startPositionIs00" />
-        <item itemvalue="Gradle.DirectionTest" />
       </list>
     </recent_temporary>
   </component>

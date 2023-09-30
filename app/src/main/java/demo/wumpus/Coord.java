@@ -3,18 +3,18 @@ package demo.wumpus;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class ImmputableCoord {
+public class Coord {
 
   private final Integer x;
   private final Integer y;
 
-  public ImmputableCoord(Integer x, Integer y) {
+  public Coord(Integer x, Integer y) {
     this.x = x;
     this.y = y;
   }
 
-  public ImmputableCoord getNeighbour(Direction.Directions direction) {
-    return new ImmputableCoord(x + direction.xOffset, y + direction.yOffset);
+  public Coord getNeighbour(Direction.Directions direction) {
+    return new Coord(x + direction.xOffset, y + direction.yOffset);
   }
 
   public Integer getX() {
@@ -29,9 +29,9 @@ public class ImmputableCoord {
   public boolean equals(Object o) {
     if (this == o) return true;
 
-    if (!(o instanceof ImmputableCoord)) return false;
+    if (!(o instanceof Coord)) return false;
 
-    ImmputableCoord that = (ImmputableCoord) o;
+    Coord that = (Coord) o;
 
     return new EqualsBuilder().append(getX(), that.getX()).append(getY(), that.getY()).isEquals();
   }
