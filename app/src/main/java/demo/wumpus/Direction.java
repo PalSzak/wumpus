@@ -3,6 +3,7 @@ package demo.wumpus;
 import java.util.List;
 
 public class Direction {
+
   public enum Directions {
     Up, Right, Down, Left;
   }
@@ -27,4 +28,9 @@ public class Direction {
   public void turnLeft() {
     currDirIdx = (currDirIdx + 3) % directions.size();
   }
+
+  public void turnRight() {
+    currDirIdx = (currDirIdx + 1) % directions.size();
+  }
+
 }

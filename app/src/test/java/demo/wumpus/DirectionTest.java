@@ -25,4 +25,11 @@ public class DirectionTest {
     direction.turnLeft();
     Assertions.assertEquals(Direction.Directions.Down, direction.getCurrentDirection());
   }
+
+  @Test
+  public void canTurnRight() {
+    Direction direction = new Direction();
+    direction.turnRight();
+    Assertions.assertEquals(Direction.Directions.Right, direction.getCurrentDirection());
+  }
 }
