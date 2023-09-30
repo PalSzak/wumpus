@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/DirectionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/DirectionTest.java" afterDir="false" />
     </list>
@@ -49,7 +50,31 @@
     &quot;last_opened_file_path&quot;: &quot;/home/fern/projects/wumpus&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.DirectionTest.canTurnLeft">
+  <component name="RunManager" selected="Gradle.DirectionTest">
+    <configuration name="DirectionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;demo.wumpus.DirectionTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="DirectionTest.canTurnLeft" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -98,6 +123,30 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="DirectionTest.doubleLeftIsDown" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;demo.wumpus.DirectionTest.doubleLeftIsDown&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="PlayerTest.firstTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -124,6 +173,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DirectionTest" />
+        <item itemvalue="Gradle.DirectionTest.doubleLeftIsDown" />
         <item itemvalue="Gradle.DirectionTest.canTurnLeft" />
         <item itemvalue="Gradle.DirectionTest.defaultDirectionIsUp" />
         <item itemvalue="Gradle.PlayerTest.firstTest" />

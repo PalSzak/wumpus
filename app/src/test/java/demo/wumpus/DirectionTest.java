@@ -18,4 +18,11 @@ public class DirectionTest {
     Assertions.assertEquals(Direction.Directions.Left, direction.getCurrentDirection());
   }
 
+  @Test
+  public void doubleLeftIsDown() {
+    Direction direction = new Direction();
+    direction.turnLeft();
+    direction.turnLeft();
+    Assertions.assertEquals(Direction.Directions.Down, direction.getCurrentDirection());
+  }
 }

@@ -1,21 +1,30 @@
 package demo.wumpus;
 
+import java.util.List;
+
 public class Direction {
   public enum Directions {
     Up, Right, Down, Left;
   }
 
-  private Directions currentDirection;
+  private List<Directions> directions =
+      List.of(
+          Directions.Up,
+          Directions.Right,
+          Directions.Down,
+          Directions.Left);
+
+  private int currDirIdx;
 
   public Direction() {
-    currentDirection = Directions.Up;
+    currDirIdx = 0;
   }
 
   public Directions getCurrentDirection() {
-    return currentDirection;
+    return directions.get(currDirIdx);
   }
 
   public void turnLeft() {
-    currentDirection = Directions.Left;
+    currDirIdx = (currDirIdx + 3) % directions.size();
   }
 }
