@@ -5,7 +5,18 @@ import java.util.List;
 public class Direction {
 
   public enum Directions {
-    Up, Right, Down, Left;
+    Up(1, 0),
+    Right(0, 1),
+    Down(-1, 0),
+    Left(0, -1);
+
+    public Integer xOffset;
+    public Integer yOffset;
+
+    Directions(Integer xOffset, Integer yOffset) {
+      this.xOffset = xOffset;
+      this.yOffset = yOffset;
+    }
   }
 
   private List<Directions> directions =

@@ -13,6 +13,10 @@ public class ImmputableCoord {
     this.y = y;
   }
 
+  public ImmputableCoord getNeighbour(Direction.Directions direction) {
+    return new ImmputableCoord(x + direction.xOffset, y + direction.yOffset);
+  }
+
   public Integer getX() {
     return x;
   }

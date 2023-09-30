@@ -14,6 +14,8 @@ public class PlayerTest {
   @Test
   public void playerCanMove() {
     Player player = new Player();
-    Assertions.assertEquals(new ImmputableCoord(1,0), player.move(), "Player steps to it's direction");
+    player.move();
+    Assertions.assertEquals(new ImmputableCoord(1,0), player.getPosition(), "Player steps to it's direction");
   }
+
 }
