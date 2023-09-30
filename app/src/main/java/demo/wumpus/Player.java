@@ -2,18 +2,18 @@ package demo.wumpus;
 
 public class Player {
   ImmputableCoord position;
-  Direction direction;
+  Direction faceDirection;
 
-  public Player() {
-    position = new ImmputableCoord(0, 0);
-    direction = new Direction();
+  public Player(ImmputableCoord startPosition) {
+    position = startPosition;
+    faceDirection = new Direction();
   }
 
-  public ImmputableCoord getPosition() {
-    return position;
+  public ImmputableCoord move() {
+    return position.getNeighbour(faceDirection.getCurrentDirection());
   }
 
-  public void move() {
-    position = position.getNeighbour(direction.getCurrentDirection());
+  public void turnLeft() {
+    faceDirection.turnLeft();
   }
 }

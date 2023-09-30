@@ -1,21 +1,26 @@
 package demo.wumpus;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
+  Player player;
 
-  @Test
-  public void startPositionIs00() {
-    Player player = new Player();
-    Assertions.assertEquals(new ImmputableCoord(0,0), player.getPosition(), "Start position is (0,0)");
+  @BeforeEach
+  public void init() {
+    player = new Player(new ImmputableCoord(5, 5));
   }
 
   @Test
   public void playerCanMove() {
-    Player player = new Player();
-    player.move();
-    Assertions.assertEquals(new ImmputableCoord(1,0), player.getPosition(), "Player steps to it's direction");
+    Assertions.assertEquals(new ImmputableCoord(6,5), player.move(), "Player steps to it's direction");
+  }
+
+  @Test
+  public void playerCanTurnLeft() {
+    player.turnLeft();
+    Assertions.assertEquals(new ImmputableCoord(5,4), player.move(), "Player steps to it's direction");
   }
 
 }
