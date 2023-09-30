@@ -15,7 +15,7 @@ public class DirectionTest {
   public void canTurnLeft() {
     Direction direction = new Direction();
     direction.turnLeft();
-    Assertions.assertEquals(Direction.Directions.Left, direction.getCurrentDirection());
+    Assertions.assertEquals(Direction.Directions.Left, direction.getCurrentDirection(), "Player can turn left");
   }
 
   @Test
@@ -30,6 +30,6 @@ public class DirectionTest {
   public void canTurnRight() {
     Direction direction = new Direction();
     direction.turnRight();
-    Assertions.assertEquals(Direction.Directions.Right, direction.getCurrentDirection());
+    Assertions.assertEquals(Direction.Directions.Right, direction.getCurrentDirection(), "Player can turn right");
   }
 }
