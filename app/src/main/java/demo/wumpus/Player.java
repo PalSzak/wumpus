@@ -20,4 +20,8 @@ public class Player {
   public void turnRight() {
     faceDirection.turnRight();
   }
+
+  public Arrow shoot() {
+    return new Arrow(position, faceDirection.getCurrentDirection());
+  }
 }

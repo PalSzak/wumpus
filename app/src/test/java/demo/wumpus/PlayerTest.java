@@ -5,11 +5,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
-  Player player;
+  private Player player;
+  private Coord currentPlayerCoord;
 
   @BeforeEach
   public void init() {
-    player = new Player(new Coord(5, 5));
+    currentPlayerCoord = new Coord(5, 5);
+    player = new Player(currentPlayerCoord);
   }
 
   @Test
@@ -29,5 +31,10 @@ public class PlayerTest {
     Assertions.assertEquals(new Coord(5,6), player.move(), "Player steps to it's direction");
   }
 
+  @Test
+  public void playerShootsToFaceDirection() {
+    Arrow arrow = player.shoot();
+    Assertions.assertEquals(new Arrow(currentPlayerCoord, Direction.Directions.Up), arrow, "Arrow should file to player direction");
+  }
 
 }

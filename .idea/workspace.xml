@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/ImmputableCoord.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Coord.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/PlayerTest.java" afterDir="false" />
     </list>
@@ -66,7 +65,12 @@
     &quot;last_opened_file_path&quot;: &quot;/home/fern/projects/wumpus&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.PlayerTest.playerCanTurnRight">
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="demo.wumpus" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.PlayerTest.playerShootsToFaceDirection">
     <configuration name="PlayerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -163,7 +167,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest.startPositionIs00" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PlayerTest.playerShootsToFaceDirection" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -176,7 +180,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;demo.wumpus.PlayerTest.startPositionIs00&quot;" />
+            <option value="&quot;demo.wumpus.PlayerTest.playerShootsToFaceDirection&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -189,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PlayerTest.playerShootsToFaceDirection" />
         <item itemvalue="Gradle.PlayerTest.playerCanTurnRight" />
         <item itemvalue="Gradle.PlayerTest.playerCanTurnLeft" />
         <item itemvalue="Gradle.PlayerTest" />
         <item itemvalue="Gradle.PlayerTest.playerCanMove" />
-        <item itemvalue="Gradle.PlayerTest.startPositionIs00" />
       </list>
     </recent_temporary>
   </component>
