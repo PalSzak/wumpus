@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 public class PlayerTest {
   private Player player;
   private Coord currentPlayerCoord;
@@ -33,8 +35,14 @@ public class PlayerTest {
 
   @Test
   public void playerShootsToFaceDirection() {
-    Arrow arrow = player.shoot();
-    Assertions.assertEquals(new Arrow(currentPlayerCoord, Direction.Directions.Up), arrow, "Arrow should file to player direction");
+    Optional<Arrow> arrow = player.shoot();
+    Assertions.assertEquals(new Arrow(currentPlayerCoord, Direction.Directions.Up), arrow.get(), "Arrow should file to player direction");
   }
 
+  @Test
+  public void playerCanShootOnlyOnce() {
+    player.shoot();
+    Optional<Arrow> arrow = player.shoot();
+    Assertions.assertTrue(arrow.isEmpty(), "Player has only one arrow");
+  }
 }

@@ -70,7 +70,7 @@
       <recent name="demo.wumpus" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.PlayerTest.playerShootsToFaceDirection">
+  <component name="RunManager" selected="Gradle.PlayerTest.playerCanShootOnlyOnce">
     <configuration name="PlayerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -95,7 +95,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="PlayerTest.playerCanMove" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="PlayerTest.playerCanShootOnlyOnce" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -108,7 +108,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;demo.wumpus.PlayerTest.playerCanMove&quot;" />
+            <option value="&quot;demo.wumpus.PlayerTest.playerCanShootOnlyOnce&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -193,11 +193,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PlayerTest.playerCanShootOnlyOnce" />
         <item itemvalue="Gradle.PlayerTest.playerShootsToFaceDirection" />
         <item itemvalue="Gradle.PlayerTest.playerCanTurnRight" />
         <item itemvalue="Gradle.PlayerTest.playerCanTurnLeft" />
         <item itemvalue="Gradle.PlayerTest" />
-        <item itemvalue="Gradle.PlayerTest.playerCanMove" />
       </list>
     </recent_temporary>
   </component>

@@ -1,12 +1,16 @@
 package demo.wumpus;
 
+import java.util.Optional;
+
 public class Player {
-  Coord position;
-  Direction faceDirection;
+  private boolean hasArrow;
+  private Coord position;
+  private final Direction faceDirection;
 
   public Player(Coord startPosition) {
     position = startPosition;
     faceDirection = new Direction();
+    hasArrow = true;
   }
 
   public Coord move() {
@@ -21,7 +25,12 @@ public class Player {
     faceDirection.turnRight();
   }
 
-  public Arrow shoot() {
-    return new Arrow(position, faceDirection.getCurrentDirection());
+  public Optional<Arrow> shoot() {
+    if(hasArrow) {
+      hasArrow = false;
+      return Optional.of(new Arrow(position, faceDirection.getCurrentDirection()));
+    } else {
+      return Optional.empty();
+    }
   }
 }
