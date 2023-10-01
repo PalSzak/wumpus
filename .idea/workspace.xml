@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,9 +36,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -78,7 +79,31 @@
       <recent name="demo.wumpus" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WumpusTest.theWumpusIsStinky">
+  <component name="RunManager" selected="Gradle.PitTest.pitIsWindy">
+    <configuration name="PitTest.pitIsWindy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;demo.wumpus.PitTest.pitIsWindy&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="PlayerTest.playerCanShootOnlyOnce" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -93,30 +118,6 @@
             <option value=":app:test" />
             <option value="--tests" />
             <option value="&quot;demo.wumpus.PlayerTest.playerCanShootOnlyOnce&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <configuration name="PlayerTest.playerCanTurnLeft" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;demo.wumpus.PlayerTest.playerCanTurnLeft&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -201,11 +202,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.PitTest.pitIsWindy" />
         <item itemvalue="Gradle.WumpusTest.theWumpusIsStinky" />
         <item itemvalue="Gradle.PlayerTest.playerCanShootOnlyOnce" />
         <item itemvalue="Gradle.PlayerTest.playerShootsToFaceDirection" />
         <item itemvalue="Gradle.PlayerTest.playerCanTurnRight" />
-        <item itemvalue="Gradle.PlayerTest.playerCanTurnLeft" />
       </list>
     </recent_temporary>
   </component>
