@@ -9,9 +9,9 @@ public class Gold implements Perceptable {
   }
 
   @Override
-  public Percept getPercept(Player player) {
+  public Percept getPerceptFrom(Room room) {
     Percept result = Percept.None;
-    if(position.equals(player.getPosition())){
+    if(position.equals(room)){
       result = Percept.Glitter;
     }
     return result;

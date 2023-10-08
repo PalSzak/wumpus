@@ -24,6 +24,10 @@ public class Room {
     return new Room(x + direction.xOffset, y + direction.yOffset);
   }
 
+  public Collection<Room> getNeighbours() {
+    return Arrays.stream(Direction.Directions.values()).map(this::getNeighbour).collect(Collectors.toList());
+  }
+
   public Integer getX() {
     return x;
   }
@@ -54,9 +58,5 @@ public class Room {
         .append("x", x)
         .append("y", y)
         .toString();
-  }
-
-  public Collection<Object> getNeighbours() {
-    return Arrays.stream(Direction.Directions.values()).map(this::getNeighbour).collect(Collectors.toList());
   }
 }

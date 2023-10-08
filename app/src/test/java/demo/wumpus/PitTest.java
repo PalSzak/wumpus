@@ -8,22 +8,22 @@ class PitTest {
   @Test
   public void pitCausesWindInNeighbourRooms(){
     Pit pit = new Pit(new Room(5,5));
-    Player upperNeighbour = new Player(new Room(6, 5));
-    Player lowerNeighbour = new Player(new Room(4, 5));
-    Player leftNeighbour = new Player(new Room(5, 4));
-    Player rightNeighbour = new Player(new Room(5, 4));
+    Room upperNeighbour = new Room(6, 5);
+    Room lowerNeighbour = new Room(4, 5);
+    Room leftNeighbour = new Room(5, 4);
+    Room rightNeighbour = new Room(5, 4);
 
-    Assertions.assertEquals(Percept.Breeze,pit.getPercept(upperNeighbour), "Pit is windy");
-    Assertions.assertEquals(Percept.Breeze,pit.getPercept(lowerNeighbour), "Pit is windy");
-    Assertions.assertEquals(Percept.Breeze,pit.getPercept(leftNeighbour), "Pit is windy");
-    Assertions.assertEquals(Percept.Breeze,pit.getPercept(rightNeighbour), "Pit is windy");
+    Assertions.assertEquals(Percept.Breeze,pit.getPerceptFrom(upperNeighbour), "Pit is windy");
+    Assertions.assertEquals(Percept.Breeze,pit.getPerceptFrom(lowerNeighbour), "Pit is windy");
+    Assertions.assertEquals(Percept.Breeze,pit.getPerceptFrom(leftNeighbour), "Pit is windy");
+    Assertions.assertEquals(Percept.Breeze,pit.getPerceptFrom(rightNeighbour), "Pit is windy");
   }
 
   @Test
   public void pitIsNotPerceptableFromFarCells(){
     Pit pit = new Pit(new Room(5,5));
-    Player distantPlayer = new Player(Room.START_POSITION);
+    Room distantRoom = Room.START_POSITION;
 
-    Assertions.assertEquals(Percept.None,pit.getPercept(distantPlayer), "Pit is windy");
+    Assertions.assertEquals(Percept.None,pit.getPerceptFrom(distantRoom), "No wind from there");
   }
 }
