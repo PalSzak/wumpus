@@ -8,29 +8,29 @@ import java.util.Optional;
 
 public class PlayerTest {
   private Player player;
-  private Coord currentPlayerCoord;
+  private Room currentPlayerCoord;
 
   @BeforeEach
   public void init() {
-    currentPlayerCoord = new Coord(5, 5);
+    currentPlayerCoord = new Room(5, 5);
     player = new Player(currentPlayerCoord);
   }
 
   @Test
   public void playerCanMove() {
-    Assertions.assertEquals(new Coord(6,5), player.move(), "Player steps to it's direction");
+    Assertions.assertEquals(new Room(6,5), player.move(), "Player steps to it's direction");
   }
 
   @Test
   public void playerCanTurnLeft() {
     player.turnLeft();
-    Assertions.assertEquals(new Coord(5,4), player.move(), "Player steps to it's direction");
+    Assertions.assertEquals(new Room(5,4), player.move(), "Player steps to it's direction");
   }
 
   @Test
   public void playerCanTurnRight() {
     player.turnRight();
-    Assertions.assertEquals(new Coord(5,6), player.move(), "Player steps to it's direction");
+    Assertions.assertEquals(new Room(5,6), player.move(), "Player steps to it's direction");
   }
 
   @Test

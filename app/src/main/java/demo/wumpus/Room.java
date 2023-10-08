@@ -4,19 +4,19 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class Coord {
-  public static final Coord ZERO_ZERO = new Coord(0,0);
+public class Room {
+  public static final Room START_POSITION = new Room(0,0);
 
   private final Integer x;
   private final Integer y;
 
-  public Coord(Integer x, Integer y) {
+  public Room(Integer x, Integer y) {
     this.x = x;
     this.y = y;
   }
 
-  public Coord getNeighbour(Direction.Directions direction) {
-    return new Coord(x + direction.xOffset, y + direction.yOffset);
+  public Room getNeighbour(Direction.Directions direction) {
+    return new Room(x + direction.xOffset, y + direction.yOffset);
   }
 
   public Integer getX() {
@@ -31,9 +31,9 @@ public class Coord {
   public boolean equals(Object o) {
     if (this == o) return true;
 
-    if (!(o instanceof Coord)) return false;
+    if (!(o instanceof Room)) return false;
 
-    Coord that = (Coord) o;
+    Room that = (Room) o;
 
     return new EqualsBuilder().append(getX(), that.getX()).append(getY(), that.getY()).isEquals();
   }

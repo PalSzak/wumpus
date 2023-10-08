@@ -13,7 +13,7 @@ public class WumpusWorld {
     this.gold = gold;
   }
 
-  public void move(Movable movable, Coord moveTo) {
+  public void move(Movable movable, Room moveTo) {
     if(LOWER_COORD_BOUNDARY < moveTo.getX() && moveTo.getX() < upperCoordBoundary &&
         LOWER_COORD_BOUNDARY < moveTo.getY() && moveTo.getY() < upperCoordBoundary) {
       movable.setPosition(moveTo);

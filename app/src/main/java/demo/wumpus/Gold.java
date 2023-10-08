@@ -1,13 +1,14 @@
 package demo.wumpus;
 
-public class Gold implements Perceptable{
+public class Gold implements Perceptable {
 
-  private final Coord position;
+  private final Room position;
 
-  public Gold(Coord position) {
+  public Gold(Room position) {
     this.position = position;
   }
 
+  @Override
   public Percept getPercept(Player player) {
     Percept result = Percept.None;
     if(position.equals(player.getPosition())){

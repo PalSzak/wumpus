@@ -4,16 +4,16 @@ import java.util.Optional;
 
 public class Player implements Movable{
   private boolean hasArrow;
-  private Coord position;
+  private Room position;
   private final Direction faceDirection;
 
-  public Player(Coord startPosition) {
+  public Player(Room startPosition) {
     position = startPosition;
     faceDirection = new Direction();
     hasArrow = true;
   }
 
-  public Coord move() {
+  public Room move() {
     return position.getNeighbour(faceDirection.getCurrentDirection());
   }
 
@@ -34,11 +34,11 @@ public class Player implements Movable{
     }
   }
 
-  public void setPosition(Coord position) {
+  public void setPosition(Room position) {
     this.position = position;
   }
 
-  public Coord getPosition() {
+  public Room getPosition() {
     return position;
   }
 }

@@ -5,9 +5,9 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Arrow implements Movable {
   private final Direction.Directions directions;
-  private Coord position;
+  private Room position;
 
-  public Arrow(Coord position, Direction.Directions directions) {
+  public Arrow(Room position, Direction.Directions directions) {
     this.position = position;
     this.directions = directions;
   }
@@ -28,15 +28,15 @@ public class Arrow implements Movable {
     return new HashCodeBuilder(17, 37).append(directions).append(position).toHashCode();
   }
 
-  public Coord move() {
+  public Room move() {
     return position;
   }
 
-  public void setPosition(Coord position) {
+  public void setPosition(Room position) {
     this.position = position;
   }
 
-  public Coord getPosition() {
+  public Room getPosition() {
     return position;
   }
 }
