@@ -4,14 +4,16 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
 class WumpusWorldTest {
   WumpusWorld wumpusWorld;
+  Gold gold;
 
   @BeforeEach
   public void setUp() {
-    wumpusWorld = new WumpusWorld(10);
+    gold = new Gold(new Coord(0,0));
+    wumpusWorld = new WumpusWorld(10, gold);
   }
 
   @Test
@@ -35,8 +37,8 @@ class WumpusWorldTest {
 
   @Test
   public void canNotMoveOverTheBoard() {
-    WumpusWorld smallWumpusWorld = new WumpusWorld(1);
-    Coord originalPosition = new Coord(0, 0);
+    WumpusWorld smallWumpusWorld = new WumpusWorld(1, gold);
+    Coord originalPosition = Coord.ZERO_ZERO;
     Player player = new Player(originalPosition);
 
     smallWumpusWorld.move(player, player.move());
@@ -45,7 +47,11 @@ class WumpusWorldTest {
   }
 
   @Test
-  public void goldIsGlitteringInTheSame() {
-    
+  public void goldIsGlitteringInTheSameRoom() {
+    Player player = new Player(Coord.ZERO_ZERO);
+    List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
+
+    Assertions.assertTrue(percepts.contains(Percept.Glitter));
   }
+
 }

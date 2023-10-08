@@ -1,5 +1,5 @@
 package demo.wumpus;
 
-public enum Precepts {
+public enum Percept {
   Breeze, Stench, Glitter
 }

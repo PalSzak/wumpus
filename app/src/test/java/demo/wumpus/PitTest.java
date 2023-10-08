@@ -8,6 +8,6 @@ class PitTest {
   @Test
   public void pitIsWindy(){
     Pit pit = new Pit();
-    Assertions.assertEquals(Precepts.Breeze,pit.getPrecept(), "Pit is windy");
+    Assertions.assertEquals(Percept.Breeze,pit.getPrecept(), "Pit is windy");
   }
 }

@@ -8,7 +8,7 @@ class WumpiTest {
   @Test
   public void theWumpusIsStinky() {
     Wumpi wumpus = new Wumpi();
-    Assertions.assertEquals(Precepts.Stench, wumpus.getPrecept(), "Wumpus is stinky.");
+    Assertions.assertEquals(Percept.Stench, wumpus.getPrecept(), "Wumpus is stinky.");
   }
 
 

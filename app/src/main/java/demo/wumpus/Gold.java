@@ -2,7 +2,10 @@ package demo.wumpus;
 
 public class Gold {
 
-  public Precepts getPrecept() {
-    return Precepts.Glitter;
+  public Gold(Coord coord) {
+  }
+
+  public Percept getPercept() {
+    return Percept.Glitter;
   }
 }

@@ -6,8 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Wumpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Wumpi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Coord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Gold.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Gold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Pit.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Pit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Percept.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Wumpi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Wumpi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/WumpusWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/WumpusWorld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/GoldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/GoldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/PitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/PitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpiTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusWorldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusWorldTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +89,7 @@
       <recent name="demo.wumpus" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GoldTest.goldIsGLittering">
+  <component name="RunManager" selected="Gradle.WumpusWorldTest.goldIsNotGlitteringInOtherRooms">
     <configuration name="GoldTest.goldIsGLittering" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -131,30 +138,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="WumpusWorldTest.arrowCanMove" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":app:test" />
-            <option value="--tests" />
-            <option value="&quot;demo.wumpus.WumpusWorldTest.arrowCanMove&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="WumpusWorldTest.canNotMoveOverTheBoard" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -179,7 +162,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="WumpusWorldTest.playerCanMove" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="WumpusWorldTest.goldIsGlitteringInTheSameRoom" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -192,7 +175,31 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;demo.wumpus.WumpusWorldTest.playerCanMove&quot;" />
+            <option value="&quot;demo.wumpus.WumpusWorldTest.goldIsGlitteringInTheSameRoom&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="WumpusWorldTest.goldIsNotGlitteringInOtherRooms" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":app:test" />
+            <option value="--tests" />
+            <option value="&quot;demo.wumpus.WumpusWorldTest.goldIsNotGlitteringInOtherRooms&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -205,11 +212,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.WumpusWorldTest.goldIsNotGlitteringInOtherRooms" />
+        <item itemvalue="Gradle.WumpusWorldTest.goldIsGlitteringInTheSameRoom" />
         <item itemvalue="Gradle.GoldTest.goldIsGLittering" />
         <item itemvalue="Gradle.WumpusWorldTest" />
         <item itemvalue="Gradle.WumpusWorldTest.canNotMoveOverTheBoard" />
-        <item itemvalue="Gradle.WumpusWorldTest.arrowCanMove" />
-        <item itemvalue="Gradle.WumpusWorldTest.playerCanMove" />
       </list>
     </recent_temporary>
   </component>

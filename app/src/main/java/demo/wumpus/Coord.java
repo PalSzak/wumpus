@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Coord {
+  public static final Coord ZERO_ZERO = new Coord(0,0);
 
   private final Integer x;
   private final Integer y;
