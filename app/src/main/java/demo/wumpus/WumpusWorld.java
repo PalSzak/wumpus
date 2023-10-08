@@ -7,4 +7,7 @@ public class WumpusWorld {
   }
 
 
+  public void move(Arrow arrow, Coord moveTo) {
+    arrow.setPosition(moveTo);
+  }
 }
