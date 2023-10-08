@@ -9,6 +9,12 @@ public class Pit implements Perceptable{
 
   @Override
   public Percept getPercept(Player player) {
-    return Percept.Breeze;
+    Percept result = Percept.None;
+
+    if(position.getNeighbours().contains(player.getPosition())) {
+      result = Percept.Breeze;
+    }
+
+    return result;
   }
 }

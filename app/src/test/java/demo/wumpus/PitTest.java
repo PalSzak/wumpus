@@ -19,4 +19,11 @@ class PitTest {
     Assertions.assertEquals(Percept.Breeze,pit.getPercept(rightNeighbour), "Pit is windy");
   }
 
+  @Test
+  public void pitIsNotPerceptableFromFarCells(){
+    Pit pit = new Pit(new Room(5,5));
+    Player distantPlayer = new Player(Room.START_POSITION);
+
+    Assertions.assertEquals(Percept.None,pit.getPercept(distantPlayer), "Pit is windy");
+  }
 }

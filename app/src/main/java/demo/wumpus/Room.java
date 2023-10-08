@@ -4,6 +4,11 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Room {
   public static final Room START_POSITION = new Room(0,0);
 
@@ -49,5 +54,9 @@ public class Room {
         .append("x", x)
         .append("y", y)
         .toString();
+  }
+
+  public Collection<Object> getNeighbours() {
+    return Arrays.stream(Direction.Directions.values()).map(this::getNeighbour).collect(Collectors.toList());
   }
 }
