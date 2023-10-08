@@ -33,4 +33,12 @@ public class Player {
       return Optional.empty();
     }
   }
+
+  public void setPosition(Coord position) {
+    this.position = position;
+  }
+
+  public Coord getPosition() {
+    return position;
+  }
 }
