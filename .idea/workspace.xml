@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Wumpus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Wumpi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusWorldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusWorldTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

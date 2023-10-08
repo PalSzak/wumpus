@@ -3,11 +3,11 @@ package demo.wumpus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class WumpusTest {
+class WumpiTest {
 
   @Test
   public void theWumpusIsStinky() {
-    Wumpus wumpus = new Wumpus();
+    Wumpi wumpus = new Wumpi();
     Assertions.assertEquals(Precepts.Stench, wumpus.getPrecept(), "Wumpus is stinky.");
   }
 

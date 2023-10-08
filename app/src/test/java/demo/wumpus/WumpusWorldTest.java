@@ -43,4 +43,9 @@ class WumpusWorldTest {
 
     Assertions.assertEquals(originalPosition, player.getPosition());
   }
+
+  @Test
+  public void goldIsGlitteringInTheSame() {
+    
+  }
 }

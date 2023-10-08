@@ -1,6 +1,6 @@
 package demo.wumpus;
 
-public class Wumpus {
+public class Wumpi {
   public Precepts getPrecept() {
     return Precepts.Stench;
   }
