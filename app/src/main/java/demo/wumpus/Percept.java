@@ -1,5 +1,5 @@
 package demo.wumpus;
 
 public enum Percept {
-  Breeze, Stench, Glitter
+  Breeze, Stench, None, Glitter
 }

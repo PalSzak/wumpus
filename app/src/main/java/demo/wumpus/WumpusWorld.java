@@ -21,6 +21,6 @@ public class WumpusWorld {
   }
 
   public List<Percept> getPerceptsOf(Player player) {
-    return List.of(gold.getPercept());
+    return List.of(gold.getPercept(player));
   }
 }

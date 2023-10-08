@@ -5,7 +5,7 @@ public class Gold {
   public Gold(Coord coord) {
   }
 
-  public Percept getPercept() {
+  public Percept getPercept(Player player) {
     return Percept.Glitter;
   }
 }
