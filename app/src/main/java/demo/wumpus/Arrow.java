@@ -35,4 +35,8 @@ public class Arrow implements Movable {
   public void setPosition(Coord position) {
     this.position = position;
   }
+
+  public Coord getPosition() {
+    return position;
+  }
 }
