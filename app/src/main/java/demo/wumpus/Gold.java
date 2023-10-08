@@ -1,11 +1,18 @@
 package demo.wumpus;
 
-public class Gold {
+public class Gold implements Perceptable{
 
-  public Gold(Coord coord) {
+  private final Coord position;
+
+  public Gold(Coord position) {
+    this.position = position;
   }
 
   public Percept getPercept(Player player) {
-    return Percept.Glitter;
+    Percept result = Percept.None;
+    if(position.equals(player.getPosition())){
+      result = Percept.Glitter;
+    }
+    return result;
   }
 }
