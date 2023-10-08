@@ -2,7 +2,7 @@ package demo.wumpus;
 
 import java.util.Optional;
 
-public class Player {
+public class Player implements Movable{
   private boolean hasArrow;
   private Coord position;
   private final Direction faceDirection;

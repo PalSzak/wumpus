@@ -3,7 +3,7 @@ package demo.wumpus;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class Arrow {
+public class Arrow implements Movable {
   private final Direction.Directions directions;
   private Coord position;
 
