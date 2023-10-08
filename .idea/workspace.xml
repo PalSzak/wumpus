@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="eb1fec33-49b0-49d2-b889-90b451618445" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Arrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Arrow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Coord.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Coord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/WumpusWorld.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/WumpusWorld.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusWorldTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/demo/wumpus/WumpusWorldTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/demo/wumpus/Precepts.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +37,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
         <option value="JUnit5 Test Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -83,8 +80,8 @@
       <recent name="demo.wumpus" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.WumpusWorldTest">
-    <configuration name="PitTest.pitIsWindy" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.GoldTest.goldIsGLittering">
+    <configuration name="GoldTest.goldIsGLittering" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -97,7 +94,7 @@
           <list>
             <option value=":app:test" />
             <option value="--tests" />
-            <option value="&quot;demo.wumpus.PitTest.pitIsWindy&quot;" />
+            <option value="&quot;demo.wumpus.GoldTest.goldIsGLittering&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -206,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GoldTest.goldIsGLittering" />
         <item itemvalue="Gradle.WumpusWorldTest" />
         <item itemvalue="Gradle.WumpusWorldTest.canNotMoveOverTheBoard" />
         <item itemvalue="Gradle.WumpusWorldTest.arrowCanMove" />
         <item itemvalue="Gradle.WumpusWorldTest.playerCanMove" />
-        <item itemvalue="Gradle.PitTest.pitIsWindy" />
       </list>
     </recent_temporary>
   </component>

@@ -1,5 +1,5 @@
 package demo.wumpus;
 
 public enum Precepts {
-  Breeze, Stench
+  Breeze, Stench, Glitter
 }
