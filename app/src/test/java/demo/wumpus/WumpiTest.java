@@ -20,4 +20,10 @@ class WumpiTest {
     Assertions.assertEquals(Percept.Stench, wumpus.getPerceptFrom(new Room(5,6)), "Wumpus is stinky.");
   }
 
+  @Test
+  public void theWumpiIsNotStinkyInOtherRooms() {
+    Wumpi wumpus = new Wumpi(new Room(5,5));
+    Assertions.assertEquals(Percept.None, wumpus.getPerceptFrom(Room.START_POSITION), "Wumpus is stinky.");
+  }
+
 }

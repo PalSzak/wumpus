@@ -49,7 +49,7 @@ class WumpusWorldTest {
   }
 
   @Test
-  public void goldIsGlitteringInTheSameRoom() {
+  public void goldIsGlittering() {
     Player player = new Player(Room.START_POSITION);
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 
@@ -57,8 +57,8 @@ class WumpusWorldTest {
   }
 
   @Test
-  public void wumpiIsStinkyInTHeSameAndAdjectiveRooms() {
-    Player player = new Player(Room.START_POSITION);
+  public void wumpiIsStinky() {
+    Player player = new Player(new Room(5,5));
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 
     Assertions.assertTrue(percepts.contains(Percept.Stench));

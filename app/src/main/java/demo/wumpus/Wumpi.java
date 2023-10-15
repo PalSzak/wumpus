@@ -1,5 +1,7 @@
 package demo.wumpus;
 
+import java.util.Collection;
+
 public class Wumpi implements Perceptable {
   private final Room position;
 
@@ -9,6 +11,8 @@ public class Wumpi implements Perceptable {
 
   @Override
   public Percept getPerceptFrom(Room room) {
-    return Percept.Stench;
+    Collection<Room> stinkyPositions = position.getNeighbours();
+    stinkyPositions.add(position);
+    return stinkyPositions.contains(room) ? Percept.Stench : Percept.None;
   }
 }
