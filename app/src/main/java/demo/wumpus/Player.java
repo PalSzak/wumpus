@@ -6,6 +6,7 @@ public class Player implements Movable{
   private boolean hasArrow;
   private Room position;
   private final Direction faceDirection;
+  private boolean bumpedToWall;
 
   public Player(Room startPosition) {
     position = startPosition;
@@ -38,7 +39,16 @@ public class Player implements Movable{
     this.position = position;
   }
 
+  @Override
+  public void bumpedToWall() {
+    bumpedToWall = true;
+  }
+
   public Room getPosition() {
     return position;
+  }
+
+  public boolean hadBump() {
+    return bumpedToWall;
   }
 }

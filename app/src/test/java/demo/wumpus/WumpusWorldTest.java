@@ -49,8 +49,10 @@ class WumpusWorldTest {
     Player player = new Player(originalPosition);
 
     smallWumpusWorld.move(player, player.move());
+    List<Percept> percepts = smallWumpusWorld.getPerceptsOf(player);
 
     Assertions.assertEquals(originalPosition, player.getPosition());
+    Assertions.assertTrue(percepts.contains(Percept.Bump),"Bump");
   }
 
   @Test
@@ -76,5 +78,7 @@ class WumpusWorldTest {
 
     Assertions.assertTrue(percepts.contains(Percept.Breeze));
   }
+
+
 
 }

@@ -21,6 +21,8 @@ public class WumpusWorld {
     if(LOWER_COORD_BOUNDARY < moveTo.getX() && moveTo.getX() < upperCoordBoundary &&
         LOWER_COORD_BOUNDARY < moveTo.getY() && moveTo.getY() < upperCoordBoundary) {
       movable.setPosition(moveTo);
+    } else {
+      movable.bumpedToWall();
     }
   }
 
@@ -31,7 +33,8 @@ public class WumpusWorld {
             .map(pit -> pit.getPerceptFrom(player.getPosition()))
             .reduce((p1,p2) -> Percept.None.equals(p1) ? p2 : p1)
             .get(),
-        gold.getPerceptFrom(player.getPosition())
+        gold.getPerceptFrom(player.getPosition()),
+        player.hadBump() ? Percept.Bump : Percept.None
     );
   }
 }

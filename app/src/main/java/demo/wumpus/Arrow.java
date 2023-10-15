@@ -36,6 +36,11 @@ public class Arrow implements Movable {
     this.position = position;
   }
 
+  @Override
+  public void bumpedToWall() {
+
+  }
+
   public Room getPosition() {
     return position;
   }
