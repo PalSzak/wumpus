@@ -8,11 +8,13 @@ public class WumpusWorld {
   private final int upperCoordBoundary;
   private final Gold gold;
   private final Wumpi wumpi;
+  private final List<Pit> pits;
 
-  public WumpusWorld(int size, Gold gold, Wumpi wumpi) {
+  public WumpusWorld(int size, Gold gold, Wumpi wumpi, List<Pit> pits) {
     this.upperCoordBoundary = size;
     this.gold = gold;
     this.wumpi = wumpi;
+    this.pits = pits;
   }
 
   public void move(Movable movable, Room moveTo) {
@@ -25,6 +27,10 @@ public class WumpusWorld {
   public List<Percept> getPerceptsOf(Player player) {
     return List.of(
         wumpi.getPerceptFrom(player.getPosition()),
+        pits.stream()
+            .map(pit -> pit.getPerceptFrom(player.getPosition()))
+            .reduce((p1,p2) -> Percept.None.equals(p1) ? p2 : p1)
+            .get(),
         gold.getPerceptFrom(player.getPosition())
     );
   }

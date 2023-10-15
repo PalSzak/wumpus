@@ -10,12 +10,17 @@ class WumpusWorldTest {
   WumpusWorld wumpusWorld;
   Gold gold;
   Wumpi wumpi;
+  List<Pit> pits;
 
   @BeforeEach
   public void setUp() {
     gold = new Gold(new Room(0,0));
     wumpi = new Wumpi(new Room(5,5));
-    wumpusWorld = new WumpusWorld(10, gold, wumpi);
+    pits = List.of(
+        new Pit(new Room(0,1)),
+        new Pit(new Room(9,9))
+    );
+    wumpusWorld = new WumpusWorld(10, gold, wumpi, pits);
   }
 
   @Test
@@ -39,7 +44,7 @@ class WumpusWorldTest {
 
   @Test
   public void canNotMoveOverTheBoard() {
-    WumpusWorld smallWumpusWorld = new WumpusWorld(1, gold, wumpi);
+    WumpusWorld smallWumpusWorld = new WumpusWorld(1, gold, wumpi, pits);
     Room originalPosition = Room.START_POSITION;
     Player player = new Player(originalPosition);
 
@@ -62,6 +67,14 @@ class WumpusWorldTest {
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 
     Assertions.assertTrue(percepts.contains(Percept.Stench));
+  }
+
+  @Test
+  public void pitIsWindy() {
+    Player player = new Player(Room.START_POSITION);
+    List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
+
+    Assertions.assertTrue(percepts.contains(Percept.Breeze));
   }
 
 }
