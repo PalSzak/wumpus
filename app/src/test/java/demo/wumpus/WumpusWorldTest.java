@@ -9,11 +9,13 @@ import java.util.List;
 class WumpusWorldTest {
   WumpusWorld wumpusWorld;
   Gold gold;
+  Wumpi wumpi;
 
   @BeforeEach
   public void setUp() {
     gold = new Gold(new Room(0,0));
-    wumpusWorld = new WumpusWorld(10, gold);
+    wumpi = new Wumpi(new Room(5,5));
+    wumpusWorld = new WumpusWorld(10, gold, wumpi);
   }
 
   @Test
@@ -37,7 +39,7 @@ class WumpusWorldTest {
 
   @Test
   public void canNotMoveOverTheBoard() {
-    WumpusWorld smallWumpusWorld = new WumpusWorld(1, gold);
+    WumpusWorld smallWumpusWorld = new WumpusWorld(1, gold, wumpi);
     Room originalPosition = Room.START_POSITION;
     Player player = new Player(originalPosition);
 
@@ -52,6 +54,14 @@ class WumpusWorldTest {
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 
     Assertions.assertTrue(percepts.contains(Percept.Glitter));
+  }
+
+  @Test
+  public void wumpiIsStinkyInTHeSameAndAdjectiveRooms() {
+    Player player = new Player(Room.START_POSITION);
+    List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
+
+    Assertions.assertTrue(percepts.contains(Percept.Stench));
   }
 
 }
