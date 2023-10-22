@@ -11,20 +11,20 @@ class WumpusWorldTest {
   WumpusWorld wumpusWorld;
   WumpusWorld smallWumpusWorld;
   Gold gold;
-  Wumpus wumpi;
+  Wumpus wumpus;
   List<Pit> pits;
 
   @BeforeEach
   public void setUp() {
     player = new Player(Room.START_POSITION);
     gold = new Gold(new Room(0,0));
-    wumpi = new Wumpus(new Room(5,5));
+    wumpus = new Wumpus(new Room(5,5));
     pits = List.of(
         new Pit(new Room(0,1)),
         new Pit(new Room(9,9))
     );
-    wumpusWorld = new WumpusWorld(10, gold, wumpi, pits);
-    smallWumpusWorld = new WumpusWorld(1, gold, wumpi, pits);
+    wumpusWorld = new WumpusWorld(10, gold, wumpus, pits);
+    smallWumpusWorld = new WumpusWorld(1, gold, wumpus, pits);
   }
 
   @Test
@@ -67,11 +67,19 @@ class WumpusWorldTest {
 
   @Test
   public void wumpusScreamsWhenDie() {
-    wumpi.die();
+    wumpus.die();
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 
     Assertions.assertTrue(percepts.contains(Percept.Scream), "When a wumpus is killed, it gives a woeful scream");
+  }
 
+  @Test
+  public void wumpusScreamIsNotPermanent() {
+    wumpusScreamsWhenDie();
+    wumpus.nextRound();
+    List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
+
+    Assertions.assertFalse(percepts.contains(Percept.Scream));
   }
 
   @Test

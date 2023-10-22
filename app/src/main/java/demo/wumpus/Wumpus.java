@@ -4,6 +4,7 @@ import java.util.Collection;
 
 public class Wumpus implements Perceptable {
   private final Room position;
+  private boolean scream;
 
   public Wumpus(Room position) {
     this.position = position;
@@ -17,9 +18,14 @@ public class Wumpus implements Perceptable {
   }
 
   public void die() {
+    scream = true;
   }
 
   public boolean hadScream() {
-    return true;
+    return scream;
+  }
+
+  public void nextRound() {
+    scream = false;
   }
 }
