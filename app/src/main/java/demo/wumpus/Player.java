@@ -12,6 +12,7 @@ public class Player implements Movable{
     position = startPosition;
     faceDirection = new Direction();
     hasArrow = true;
+    bumpedToWall = false;
   }
 
   public Room move() {
@@ -50,5 +51,9 @@ public class Player implements Movable{
 
   public boolean hadBump() {
     return bumpedToWall;
+  }
+
+  public void nextRound() {
+    bumpedToWall = false;
   }
 }

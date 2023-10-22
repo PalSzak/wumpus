@@ -7,13 +7,16 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 class WumpusWorldTest {
+  Player player;
   WumpusWorld wumpusWorld;
+  WumpusWorld smallWumpusWorld;
   Gold gold;
   Wumpi wumpi;
   List<Pit> pits;
 
   @BeforeEach
   public void setUp() {
+    player = new Player(Room.START_POSITION);
     gold = new Gold(new Room(0,0));
     wumpi = new Wumpi(new Room(5,5));
     pits = List.of(
@@ -21,6 +24,7 @@ class WumpusWorldTest {
         new Pit(new Room(9,9))
     );
     wumpusWorld = new WumpusWorld(10, gold, wumpi, pits);
+    smallWumpusWorld = new WumpusWorld(1, gold, wumpi, pits);
   }
 
   @Test
@@ -44,15 +48,22 @@ class WumpusWorldTest {
 
   @Test
   public void canNotMoveOverTheBoard() {
-    WumpusWorld smallWumpusWorld = new WumpusWorld(1, gold, wumpi, pits);
-    Room originalPosition = Room.START_POSITION;
-    Player player = new Player(originalPosition);
+    Room originalPosition = player.getPosition();
+
 
     smallWumpusWorld.move(player, player.move());
     List<Percept> percepts = smallWumpusWorld.getPerceptsOf(player);
 
     Assertions.assertEquals(originalPosition, player.getPosition());
     Assertions.assertTrue(percepts.contains(Percept.Bump),"Bump");
+  }
+
+  @Test
+  public void bumpIsNotPermanent() {
+    canNotMoveOverTheBoard();
+    player.nextRound();
+    List<Percept> percepts = smallWumpusWorld.getPerceptsOf(player);
+    Assertions.assertFalse(percepts.contains(Percept.Bump));
   }
 
   @Test
