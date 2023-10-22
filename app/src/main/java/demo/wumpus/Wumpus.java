@@ -2,10 +2,10 @@ package demo.wumpus;
 
 import java.util.Collection;
 
-public class Wumpi implements Perceptable {
+public class Wumpus implements Perceptable {
   private final Room position;
 
-  public Wumpi(Room position) {
+  public Wumpus(Room position) {
     this.position = position;
   }
 

@@ -11,14 +11,14 @@ class WumpusWorldTest {
   WumpusWorld wumpusWorld;
   WumpusWorld smallWumpusWorld;
   Gold gold;
-  Wumpi wumpi;
+  Wumpus wumpi;
   List<Pit> pits;
 
   @BeforeEach
   public void setUp() {
     player = new Player(Room.START_POSITION);
     gold = new Gold(new Room(0,0));
-    wumpi = new Wumpi(new Room(5,5));
+    wumpi = new Wumpus(new Room(5,5));
     pits = List.of(
         new Pit(new Room(0,1)),
         new Pit(new Room(9,9))

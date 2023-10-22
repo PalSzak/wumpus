@@ -7,10 +7,10 @@ public class WumpusWorld {
 
   private final int upperCoordBoundary;
   private final Gold gold;
-  private final Wumpi wumpi;
+  private final Wumpus wumpi;
   private final List<Pit> pits;
 
-  public WumpusWorld(int size, Gold gold, Wumpi wumpi, List<Pit> pits) {
+  public WumpusWorld(int size, Gold gold, Wumpus wumpi, List<Pit> pits) {
     this.upperCoordBoundary = size;
     this.gold = gold;
     this.wumpi = wumpi;
