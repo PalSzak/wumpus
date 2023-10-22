@@ -91,7 +91,7 @@ class WumpusWorldTest {
   }
 
   @Test
-  public void wumpiIsStinky() {
+  public void wumpusIsStinky() {
     Player player = new Player(new Room(5,5));
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 

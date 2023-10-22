@@ -10,10 +10,10 @@ public class WumpusWorld {
   private final Wumpus wumpus;
   private final List<Pit> pits;
 
-  public WumpusWorld(int size, Gold gold, Wumpus wumpi, List<Pit> pits) {
+  public WumpusWorld(int size, Gold gold, Wumpus wumpus, List<Pit> pits) {
     this.upperCoordBoundary = size;
     this.gold = gold;
-    this.wumpus = wumpi;
+    this.wumpus = wumpus;
     this.pits = pits;
   }
 

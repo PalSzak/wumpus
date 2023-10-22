@@ -1,13 +1,13 @@
 package demo.wumpus;
 
 public class Game {
-  private Player player;
+  private final Player player;
 
-  public Game() {
-    player = new Player(new Room(0, 0));
+  public Game(Player player) {
+    this.player = player;
   }
 
   public Player getPlayer() {
-    return this.player;
+    return player;
   }
 }
