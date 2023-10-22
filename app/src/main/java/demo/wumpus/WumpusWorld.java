@@ -7,13 +7,13 @@ public class WumpusWorld {
 
   private final int upperCoordBoundary;
   private final Gold gold;
-  private final Wumpus wumpi;
+  private final Wumpus wumpus;
   private final List<Pit> pits;
 
   public WumpusWorld(int size, Gold gold, Wumpus wumpi, List<Pit> pits) {
     this.upperCoordBoundary = size;
     this.gold = gold;
-    this.wumpi = wumpi;
+    this.wumpus = wumpi;
     this.pits = pits;
   }
 
@@ -28,13 +28,14 @@ public class WumpusWorld {
 
   public List<Percept> getPerceptsOf(Player player) {
     return List.of(
-        wumpi.getPerceptFrom(player.getPosition()),
+        wumpus.getPerceptFrom(player.getPosition()),
         pits.stream()
             .map(pit -> pit.getPerceptFrom(player.getPosition()))
             .reduce((p1,p2) -> Percept.None.equals(p1) ? p2 : p1)
             .get(),
         gold.getPerceptFrom(player.getPosition()),
-        player.hadBump() ? Percept.Bump : Percept.None
+        player.hadBump() ? Percept.Bump : Percept.None,
+        wumpus.hadScream() ? Percept.Scream : Percept.None
     );
   }
 }

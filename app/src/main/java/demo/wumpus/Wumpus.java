@@ -15,4 +15,11 @@ public class Wumpus implements Perceptable {
     stinkyPositions.add(position);
     return stinkyPositions.contains(room) ? Percept.Stench : Percept.None;
   }
+
+  public void die() {
+  }
+
+  public boolean hadScream() {
+    return true;
+  }
 }

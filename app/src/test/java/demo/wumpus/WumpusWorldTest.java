@@ -50,7 +50,6 @@ class WumpusWorldTest {
   public void canNotMoveOverTheBoard() {
     Room originalPosition = player.getPosition();
 
-
     smallWumpusWorld.move(player, player.move());
     List<Percept> percepts = smallWumpusWorld.getPerceptsOf(player);
 
@@ -64,6 +63,15 @@ class WumpusWorldTest {
     player.nextRound();
     List<Percept> percepts = smallWumpusWorld.getPerceptsOf(player);
     Assertions.assertFalse(percepts.contains(Percept.Bump));
+  }
+
+  @Test
+  public void wumpusScreamsWhenDie() {
+    wumpi.die();
+    List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
+
+    Assertions.assertTrue(percepts.contains(Percept.Scream), "When a wumpus is killed, it gives a woeful scream");
+
   }
 
   @Test
