@@ -1,6 +1,7 @@
 package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
+import demo.wumpus.events.MoveAction;
 
 import java.util.Objects;
 
@@ -36,6 +37,8 @@ public class Game {
       gameAction.run(world);
     }
 
-    player.takeAction(world.getPerceptsOf(player));
+    GameAction gameAction = player.takeAction(world.getPerceptsOf(player));
+    if(gameAction != null)
+      gameAction.run(world);
   }
 }

@@ -1,5 +1,7 @@
 package demo.wumpus;
 
+import demo.wumpus.events.MoveAction;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -59,7 +61,8 @@ public class Player implements Movable{
     bumpedToWall = false;
   }
 
-  public void takeAction(List<Percept> percepts) {
+  public MoveAction takeAction(List<Percept> percepts) {
 
+    return null;
   }
 }

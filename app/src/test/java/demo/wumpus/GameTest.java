@@ -1,6 +1,7 @@
 package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
+import demo.wumpus.events.MoveAction;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,6 @@ public class GameTest extends Game {
   @Test
   public void arrowHasBeenCalledToMakeItsMoveInEachRound() {
     AtomicBoolean arrowTakeAction = new AtomicBoolean(false);
-
     this.setArrow(new Arrow(new Room(0, 0), Direction.Directions.Up) {
       @Override
       public GameAction takeAction() {
@@ -35,6 +35,7 @@ public class GameTest extends Game {
     });
 
     this.nextRound();
+
     Assertions.assertTrue(arrowTakeAction.get());
   }
 
@@ -44,21 +45,37 @@ public class GameTest extends Game {
     this.setArrow(arrow);
 
     this.nextRound();
+
     Assertions.assertEquals(new Room(1,0), arrow.getPosition());
   }
 
   @Test
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
-
     this.setPlayer(new Player(new Room(0, 0)) {
-      public void takeAction(List<Percept> percepts) {
+      public MoveAction takeAction(List<Percept> percepts) {
         playerGotPercepts.set(true);
+        return null;
       }
     });
 
     this.nextRound();
+
     Assertions.assertTrue(playerGotPercepts.get());
+  }
+
+  @Test
+  public void playerCanMoveForward() {
+    Player player = new Player(new Room(0, 0)) {
+      public MoveAction takeAction(List<Percept> percepts) {
+        return new MoveAction(this);
+      }
+    };
+    this.setPlayer(player);
+
+    this.nextRound();
+
+    Assertions.assertEquals(new Room(1,0), player.getPosition());
   }
 
 }
