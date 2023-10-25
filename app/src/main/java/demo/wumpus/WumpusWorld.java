@@ -32,7 +32,7 @@ public class WumpusWorld {
         pits.stream()
             .map(pit -> pit.getPerceptFrom(player.getPosition()))
             .reduce((p1,p2) -> Percept.None.equals(p1) ? p2 : p1)
-            .get(),
+            .orElseGet(() -> Percept.None),
         gold.getPerceptFrom(player.getPosition()),
         player.hadBump() ? Percept.Bump : Percept.None,
         wumpus.hadScream() ? Percept.Scream : Percept.None

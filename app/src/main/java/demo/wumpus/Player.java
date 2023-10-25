@@ -1,5 +1,6 @@
 package demo.wumpus;
 
+import java.util.List;
 import java.util.Optional;
 
 public class Player implements Movable{
@@ -56,5 +57,9 @@ public class Player implements Movable{
 
   public void nextRound() {
     bumpedToWall = false;
+  }
+
+  public void takeAction(List<Percept> percepts) {
+
   }
 }

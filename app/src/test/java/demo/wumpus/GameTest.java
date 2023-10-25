@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameTest extends Game {
@@ -41,7 +42,23 @@ public class GameTest extends Game {
   public void arrowIsMovingForwardInEachRound() {
     Arrow arrow = new Arrow(new Room(0, 0), Direction.Directions.Up);
     this.setArrow(arrow);
+
     this.nextRound();
     Assertions.assertEquals(new Room(1,0), arrow.getPosition());
   }
+
+  @Test
+  public void playerGetsTheirPerceptsInEachRound() {
+    AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
+
+    this.setPlayer(new Player(new Room(0, 0)) {
+      public void takeAction(List<Percept> percepts) {
+        playerGotPercepts.set(true);
+      }
+    });
+
+    this.nextRound();
+    Assertions.assertTrue(playerGotPercepts.get());
+  }
+
 }
