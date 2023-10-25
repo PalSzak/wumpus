@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GameTest extends Game {
@@ -21,16 +22,11 @@ public class GameTest extends Game {
   @Test
   public void arrowHasBeenCalledToMakeItsMoveInEachRound() {
     AtomicBoolean arrowTakeAction = new AtomicBoolean(false);
-    this.setArrow(new Arrow(new Room(0, 0), Direction.Directions.Up) {
+    this.addActor(new Arrow(new Room(0, 0), Direction.Directions.Up) {
       @Override
-      public GameAction takeAction() {
+      public Optional<GameAction> takeAction(List<Percept> percepts) {
         arrowTakeAction.set(true);
-        return new GameAction() {
-          @Override
-          public void run(WumpusWorld world) {
-
-          }
-        };
+        return Optional.empty();
       }
     });
 
@@ -42,7 +38,7 @@ public class GameTest extends Game {
   @Test
   public void arrowIsMovingForwardInEachRound() {
     Arrow arrow = new Arrow(new Room(0, 0), Direction.Directions.Up);
-    this.setArrow(arrow);
+    this.addActor(arrow);
 
     this.nextRound();
 
@@ -52,10 +48,10 @@ public class GameTest extends Game {
   @Test
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
-    this.setPlayer(new Player(new Room(0, 0)) {
-      public MoveAction takeAction(List<Percept> percepts) {
+    replacePlayerWith(new Player(new Room(0, 0)) {
+      public Optional<GameAction> takeAction(List<Percept> percepts) {
         playerGotPercepts.set(true);
-        return null;
+        return Optional.empty();
       }
     });
 
@@ -67,15 +63,20 @@ public class GameTest extends Game {
   @Test
   public void playerCanMoveForward() {
     Player player = new Player(new Room(0, 0)) {
-      public MoveAction takeAction(List<Percept> percepts) {
-        return new MoveAction(this);
+      public Optional<GameAction> takeAction(List<Percept> percepts) {
+        return Optional.of(new MoveAction(this));
       }
     };
-    this.setPlayer(player);
+    replacePlayerWith(player);
 
     this.nextRound();
 
     Assertions.assertEquals(new Room(1,0), player.getPosition());
+  }
+
+  private void replacePlayerWith(Player player) {
+    actors.removeIf(a -> a instanceof Player);
+    actors.add(player);
   }
 
 }

@@ -8,7 +8,7 @@ public class GameFactoryTest {
   @Test
   public void basicGameRules() {
     Game game = new GameFactory().build();
-    Assertions.assertEquals(new Room(0, 0), game.getPlayer().getPosition(), "Start position is 0,0");
+    Assertions.assertEquals(new Room(0, 0), game.actors.stream().filter(a -> a instanceof Player).findFirst().get().getPosition(), "Start position is 0,0");
   }
 
 

@@ -26,15 +26,15 @@ public class WumpusWorld {
     }
   }
 
-  public List<Percept> getPerceptsOf(Player player) {
+  public List<Percept> getPerceptsOf(Actor actor) {
     return List.of(
-        wumpus.getPerceptFrom(player.getPosition()),
+        wumpus.getPerceptFrom(actor.getPosition()),
         pits.stream()
-            .map(pit -> pit.getPerceptFrom(player.getPosition()))
+            .map(pit -> pit.getPerceptFrom(actor.getPosition()))
             .reduce((p1,p2) -> Percept.None.equals(p1) ? p2 : p1)
             .orElseGet(() -> Percept.None),
-        gold.getPerceptFrom(player.getPosition()),
-        player.hadBump() ? Percept.Bump : Percept.None,
+        gold.getPerceptFrom(actor.getPosition()),
+        actor.hadBump() ? Percept.Bump : Percept.None,
         wumpus.hadScream() ? Percept.Scream : Percept.None
     );
   }

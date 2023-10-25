@@ -5,7 +5,10 @@ import demo.wumpus.events.MoveAction;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public class Arrow implements Movable {
+import java.util.List;
+import java.util.Optional;
+
+public class Arrow implements Movable, Actor {
   private final Direction.Directions direction;
   private Room position;
 
@@ -48,7 +51,13 @@ public class Arrow implements Movable {
     return position;
   }
 
-  public GameAction takeAction() {
-    return new MoveAction(this);
+  @Override
+  public boolean hadBump() {
+    return false;
+  }
+
+  @Override
+  public Optional<GameAction> takeAction(List<Percept> percepts) {
+    return Optional.of(new MoveAction(this));
   }
 }

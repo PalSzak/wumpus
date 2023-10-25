@@ -1,44 +1,30 @@
 package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
-import demo.wumpus.events.MoveAction;
 
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Game {
-  private Player player;
   private WumpusWorld world;
-  private Arrow arrow;
+  List<Actor> actors;
 
   public Game(Player player, WumpusWorld world) {
-    this.player = player;
     this.world = world;
+    actors = new ArrayList<>();
+    actors.add(player);
   }
 
-  public Player getPlayer() {
-    return player;
-  }
-
-  protected void setArrow(Arrow arrow) {
-    this.arrow = arrow;
-  }
-
-  protected void setPlayer(Player player) {
-    this.player = player;
-  }
-
-  protected void setWorld(WumpusWorld world) {
-    this.world = world;
+  protected void addActor(Arrow arrow) {
+    actors.add(arrow);
   }
 
   protected void nextRound(){
-    if(Objects.nonNull(arrow)) {
-      GameAction gameAction = arrow.takeAction();
-      gameAction.run(world);
+    for(Actor actor : actors) {
+      Optional<GameAction> gameAction = actor.takeAction(world.getPerceptsOf(actor));
+      if(gameAction.isPresent())
+        gameAction.get().run(world);
     }
-
-    GameAction gameAction = player.takeAction(world.getPerceptsOf(player));
-    if(gameAction != null)
-      gameAction.run(world);
   }
 }

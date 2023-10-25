@@ -1,11 +1,11 @@
 package demo.wumpus;
 
-import demo.wumpus.events.MoveAction;
+import demo.wumpus.events.GameAction;
 
 import java.util.List;
 import java.util.Optional;
 
-public class Player implements Movable{
+public class Player implements Movable, Actor{
   private boolean hasArrow;
   private Room position;
   private final Direction faceDirection;
@@ -61,8 +61,8 @@ public class Player implements Movable{
     bumpedToWall = false;
   }
 
-  public MoveAction takeAction(List<Percept> percepts) {
-
-    return null;
+  @Override
+  public Optional<GameAction> takeAction(List<Percept> percepts) {
+    return Optional.empty();
   }
 }
