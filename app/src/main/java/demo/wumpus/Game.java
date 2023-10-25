@@ -2,29 +2,33 @@ package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Optional;
+import java.util.Queue;
 
 public class Game {
-  private WumpusWorld world;
-  List<Actor> actors;
+  private Queue<GameAction> roundActionStack;
+  WumpusWorld world;
 
   public Game(Player player, WumpusWorld world) {
+    roundActionStack = new LinkedList<>();
     this.world = world;
-    actors = new ArrayList<>();
-    actors.add(player);
+    world.addActor(player);
   }
 
   protected void addActor(Arrow arrow) {
-    actors.add(arrow);
+    world.addActor(arrow);
   }
 
   protected void nextRound(){
-    for(Actor actor : actors) {
+    for(Actor actor : world.getActors()) {
       Optional<GameAction> gameAction = actor.takeAction(world.getPerceptsOf(actor));
+
       if(gameAction.isPresent())
-        gameAction.get().run(world);
+        roundActionStack.add(gameAction.get());
     }
+
+    while (!roundActionStack.isEmpty())
+      roundActionStack.poll().run(world);
   }
 }

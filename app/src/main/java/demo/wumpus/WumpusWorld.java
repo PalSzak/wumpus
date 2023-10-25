@@ -1,5 +1,6 @@
 package demo.wumpus;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WumpusWorld {
@@ -9,8 +10,11 @@ public class WumpusWorld {
   private final Gold gold;
   private final Wumpus wumpus;
   private final List<Pit> pits;
+  private final List<Actor> actors;
+
 
   public WumpusWorld(int size, Gold gold, Wumpus wumpus, List<Pit> pits) {
+    this.actors = new ArrayList<>();
     this.upperCoordBoundary = size;
     this.gold = gold;
     this.wumpus = wumpus;
@@ -37,5 +41,17 @@ public class WumpusWorld {
         actor.hadBump() ? Percept.Bump : Percept.None,
         wumpus.hadScream() ? Percept.Scream : Percept.None
     );
+  }
+
+  public void removeActor(Actor actor) {
+    actors.remove(actor);
+  }
+
+  public List<Actor> getActors() {
+    return actors;
+  }
+
+  public void addActor(Actor actor) {
+    actors.add(actor);
   }
 }

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameTest extends Game {
 
@@ -17,22 +18,6 @@ public class GameTest extends Game {
         new Player(new Room(0, 0)),
         new WumpusWorld(10, new Gold(new Room(2, 2)), new Wumpus(new Room(5, 5)), Collections.emptyList())
     );
-  }
-
-  @Test
-  public void arrowHasBeenCalledToMakeItsMoveInEachRound() {
-    AtomicBoolean arrowTakeAction = new AtomicBoolean(false);
-    this.addActor(new Arrow(new Room(0, 0), Direction.Directions.Up) {
-      @Override
-      public Optional<GameAction> takeAction(List<Percept> percepts) {
-        arrowTakeAction.set(true);
-        return Optional.empty();
-      }
-    });
-
-    this.nextRound();
-
-    Assertions.assertTrue(arrowTakeAction.get());
   }
 
   @Test
@@ -46,12 +31,30 @@ public class GameTest extends Game {
   }
 
   @Test
+  public void arrowHasBeenRemovedWhenItBumpedToWall() {
+    AtomicInteger callCount = new AtomicInteger(0);
+    this.addActor(new Arrow(new Room(9,0), Direction.Directions.Up){
+      @Override
+      public Optional<GameAction> takeAction(List<Percept> percepts) {
+        callCount.incrementAndGet();
+        return super.takeAction(percepts);
+      }
+    });
+    this.nextRound();
+    this.nextRound();
+
+    this.nextRound();
+
+    Assertions.assertEquals(2, callCount.get(), "Arrow should be dismissed after bumped to wall");
+  }
+
+  @Test
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
     replacePlayerWith(new Player(new Room(0, 0)) {
       public Optional<GameAction> takeAction(List<Percept> percepts) {
         playerGotPercepts.set(true);
-        return Optional.empty();
+        return super.takeAction(percepts);
       }
     });
 
@@ -75,8 +78,8 @@ public class GameTest extends Game {
   }
 
   private void replacePlayerWith(Player player) {
-    actors.removeIf(a -> a instanceof Player);
-    actors.add(player);
+    world.getActors().removeIf(a -> a instanceof Player);
+    world.addActor(player);
   }
 
 }
