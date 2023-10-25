@@ -5,6 +5,8 @@ import demo.wumpus.Figure;
 import demo.wumpus.Wumpus;
 import demo.wumpus.WumpusWorld;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class KillTheWumpus implements GameAction{
@@ -15,7 +17,9 @@ public class KillTheWumpus implements GameAction{
   }
 
   @Override
-  public void run(WumpusWorld world) {
+  public List<GameAction> run(WumpusWorld world) {
+    List<GameAction> followUp = new ArrayList<>();
+
     Optional<Wumpus> prey = world.getFigures().stream()
         .filter(f -> f instanceof Wumpus)
         .map(f -> (Wumpus) f)
@@ -24,6 +28,9 @@ public class KillTheWumpus implements GameAction{
 
     if(prey.isPresent()){
       prey.get().die();
+      followUp.add(new RemoveFigure(arrow));
     }
+
+    return followUp;
   }
 }

@@ -25,6 +25,6 @@ public class Game {
       roundActionStack.addAll(figure.takeAction(world.getPerceptsOf(figure)));
 
     while (!roundActionStack.isEmpty())
-      roundActionStack.poll().run(world);
+      roundActionStack.addAll(roundActionStack.poll().run(world));
   }
 }

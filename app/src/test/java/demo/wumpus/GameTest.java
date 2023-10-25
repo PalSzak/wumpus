@@ -59,6 +59,22 @@ public class GameTest extends Game {
   }
 
   @Test
+  public void arrowHasBeenRemovedWhenItHitsTheWumpus() {
+    AtomicInteger callCount = new AtomicInteger(0);
+    this.addFigure(new Arrow(new Room(4, 5), Direction.Directions.Up){
+      @Override
+      public List<GameAction> takeAction(List<Percept> percepts) {
+        callCount.incrementAndGet();
+        return super.takeAction(percepts);
+      }
+    });
+    this.nextRound();
+
+    this.nextRound();
+    Assertions.assertEquals(1, callCount.get(), "Arrow should be dismissed after bumped to wall");
+  }
+
+  @Test
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
     replacePlayerWith(new Player(new Room(0, 0)) {
