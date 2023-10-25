@@ -13,16 +13,16 @@ public class Game {
   public Game(Player player, WumpusWorld world) {
     roundActionStack = new LinkedList<>();
     this.world = world;
-    world.addActor(player);
+    world.addFigure(player);
   }
 
-  protected void addActor(Arrow arrow) {
-    world.addActor(arrow);
+  protected void addFigure(Arrow arrow) {
+    world.addFigure(arrow);
   }
 
   protected void nextRound(){
-    for(Actor actor : world.getActors()) {
-      Optional<GameAction> gameAction = actor.takeAction(world.getPerceptsOf(actor));
+    for(Figure figure : world.getFigures()) {
+      Optional<GameAction> gameAction = figure.takeAction(world.getPerceptsOf(figure));
 
       if(gameAction.isPresent())
         roundActionStack.add(gameAction.get());

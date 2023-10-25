@@ -10,11 +10,11 @@ public class WumpusWorld {
   private final Gold gold;
   private final Wumpus wumpus;
   private final List<Pit> pits;
-  private final List<Actor> actors;
+  private final List<Figure> figures;
 
 
   public WumpusWorld(int size, Gold gold, Wumpus wumpus, List<Pit> pits) {
-    this.actors = new ArrayList<>();
+    this.figures = new ArrayList<>();
     this.upperCoordBoundary = size;
     this.gold = gold;
     this.wumpus = wumpus;
@@ -30,28 +30,28 @@ public class WumpusWorld {
     }
   }
 
-  public List<Percept> getPerceptsOf(Actor actor) {
+  public List<Percept> getPerceptsOf(Figure figure) {
     return List.of(
-        wumpus.getPerceptFrom(actor.getPosition()),
+        wumpus.getPerceptFrom(figure.getPosition()),
         pits.stream()
-            .map(pit -> pit.getPerceptFrom(actor.getPosition()))
+            .map(pit -> pit.getPerceptFrom(figure.getPosition()))
             .reduce((p1,p2) -> Percept.None.equals(p1) ? p2 : p1)
             .orElseGet(() -> Percept.None),
-        gold.getPerceptFrom(actor.getPosition()),
-        actor.hadBump() ? Percept.Bump : Percept.None,
+        gold.getPerceptFrom(figure.getPosition()),
+        figure instanceof Movable ? ((Movable) figure).hadBump() : Percept.None,
         wumpus.hadScream() ? Percept.Scream : Percept.None
     );
   }
 
-  public void removeActor(Actor actor) {
-    actors.remove(actor);
+  public void removeFigure(Figure figure) {
+    figures.remove(figure);
   }
 
-  public List<Actor> getActors() {
-    return actors;
+  public List<Figure> getFigures() {
+    return figures;
   }
 
-  public void addActor(Actor actor) {
-    actors.add(actor);
+  public void addFigure(Figure figure) {
+    figures.add(figure);
   }
 }

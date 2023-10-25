@@ -2,14 +2,14 @@ package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
 import demo.wumpus.events.MoveAction;
-import demo.wumpus.events.RemoveActor;
+import demo.wumpus.events.RemoveFigure;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.List;
 import java.util.Optional;
 
-public class Arrow implements Movable, Actor {
+public class Arrow implements Movable, Figure {
   private final Direction.Directions direction;
   private Room position;
   private boolean bumpedToWall;
@@ -55,14 +55,14 @@ public class Arrow implements Movable, Actor {
   }
 
   @Override
-  public boolean hadBump() {
-    return bumpedToWall;
+  public Percept hadBump() {
+    return bumpedToWall ? Percept.Bump : Percept.None;
   }
 
   @Override
   public Optional<GameAction> takeAction(List<Percept> percepts) {
     return Optional.of(percepts.contains(Percept.Bump)
-        ? new RemoveActor(this)
+        ? new RemoveFigure(this)
         : new MoveAction(this));
   }
 }

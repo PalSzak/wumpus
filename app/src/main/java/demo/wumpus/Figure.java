@@ -5,9 +5,7 @@ import demo.wumpus.events.GameAction;
 import java.util.List;
 import java.util.Optional;
 
-public interface Actor {
+public interface Figure {
   Optional<GameAction> takeAction(List<Percept> percepts);
   Room getPosition();
-
-  boolean hadBump();
 }

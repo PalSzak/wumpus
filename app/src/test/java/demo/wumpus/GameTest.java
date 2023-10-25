@@ -23,7 +23,7 @@ public class GameTest extends Game {
   @Test
   public void arrowIsMovingForwardInEachRound() {
     Arrow arrow = new Arrow(new Room(0, 0), Direction.Directions.Up);
-    this.addActor(arrow);
+    this.addFigure(arrow);
 
     this.nextRound();
 
@@ -33,7 +33,7 @@ public class GameTest extends Game {
   @Test
   public void arrowHasBeenRemovedWhenItBumpedToWall() {
     AtomicInteger callCount = new AtomicInteger(0);
-    this.addActor(new Arrow(new Room(9,0), Direction.Directions.Up){
+    this.addFigure(new Arrow(new Room(9,0), Direction.Directions.Up){
       @Override
       public Optional<GameAction> takeAction(List<Percept> percepts) {
         callCount.incrementAndGet();
@@ -78,8 +78,8 @@ public class GameTest extends Game {
   }
 
   private void replacePlayerWith(Player player) {
-    world.getActors().removeIf(a -> a instanceof Player);
-    world.addActor(player);
+    world.getFigures().removeIf(a -> a instanceof Player);
+    world.addFigure(player);
   }
 
 }

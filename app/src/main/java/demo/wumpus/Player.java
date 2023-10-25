@@ -5,7 +5,7 @@ import demo.wumpus.events.GameAction;
 import java.util.List;
 import java.util.Optional;
 
-public class Player implements Movable, Actor{
+public class Player implements Movable, Figure {
   private boolean hasArrow;
   private Room position;
   private final Direction faceDirection;
@@ -53,8 +53,8 @@ public class Player implements Movable, Actor{
     return position;
   }
 
-  public boolean hadBump() {
-    return bumpedToWall;
+  public Percept hadBump() {
+    return bumpedToWall ? Percept.Bump : Percept.None;
   }
 
   public void nextRound() {
