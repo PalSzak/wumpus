@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -109,6 +112,19 @@ public class GameTest extends Game {
     this.nextRound();
 
     Assertions.assertNull(getPlayer());
+  }
+
+  @Test
+  public void gameEndsWhenNoPlayerInDungeon() throws InterruptedException {
+    replacePlayerWith(new Player(new Room(5,5)));
+    ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+    executorService.execute(this);
+
+    executorService.shutdown();
+    boolean terminated = executorService.awaitTermination(1, TimeUnit.SECONDS);
+
+    Assertions.assertTrue(terminated, "Player should die miserable dead.");
   }
 
   private Player getPlayer() {

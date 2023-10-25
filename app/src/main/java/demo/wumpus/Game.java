@@ -5,7 +5,7 @@ import demo.wumpus.events.GameAction;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Game {
+public class Game implements Runnable {
   private Queue<GameAction> roundActionStack;
   WumpusWorld world;
 
@@ -25,5 +25,16 @@ public class Game {
 
     while (!roundActionStack.isEmpty())
       roundActionStack.addAll(roundActionStack.poll().run(world));
+  }
+
+  @Override
+  public void run() {
+    while (isPlayerOnBoard())
+      nextRound();
+  }
+
+  private boolean isPlayerOnBoard() {
+    return world.getFigures().stream()
+        .anyMatch( f -> f instanceof Player);
   }
 }
