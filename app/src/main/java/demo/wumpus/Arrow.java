@@ -44,4 +44,8 @@ public class Arrow implements Movable {
   public Room getPosition() {
     return position;
   }
+
+  public void takeAction() {
+
+  }
 }
