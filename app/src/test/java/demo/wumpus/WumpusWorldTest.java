@@ -30,7 +30,7 @@ class WumpusWorldTest {
   @Test
   public void playerCanMove() {
     Player player = new Player(new Room(0, 0));
-    Room moveTo = player.move();
+    Room moveTo = player.getDestination();
 
     wumpusWorld.move(player, moveTo);
 
@@ -40,7 +40,7 @@ class WumpusWorldTest {
   @Test
   public void arrowCanMove() {
     Arrow arrow = new Arrow(new Room(0, 0), Direction.Directions.Up);
-    Room moveTo = arrow.move();
+    Room moveTo = arrow.getDestination();
     wumpusWorld.move(arrow, moveTo);
 
     Assertions.assertEquals(moveTo, arrow.getPosition());
@@ -50,7 +50,7 @@ class WumpusWorldTest {
   public void canNotMoveOverTheBoard() {
     Room originalPosition = player.getPosition();
 
-    smallWumpusWorld.move(player, player.move());
+    smallWumpusWorld.move(player, player.getDestination());
     List<Percept> percepts = smallWumpusWorld.getPerceptsOf(player);
 
     Assertions.assertEquals(originalPosition, player.getPosition());

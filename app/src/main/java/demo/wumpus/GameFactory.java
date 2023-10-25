@@ -9,6 +9,6 @@ public class GameFactory {
 
 
   public Game build() {
-    return new Game(player);
+    return new Game(player, null);
   }
 }

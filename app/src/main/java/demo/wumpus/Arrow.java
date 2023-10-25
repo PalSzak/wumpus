@@ -1,15 +1,17 @@
 package demo.wumpus;
 
+import demo.wumpus.events.GameAction;
+import demo.wumpus.events.MoveAction;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 public class Arrow implements Movable {
-  private final Direction.Directions directions;
+  private final Direction.Directions direction;
   private Room position;
 
   public Arrow(Room position, Direction.Directions directions) {
     this.position = position;
-    this.directions = directions;
+    this.direction = directions;
   }
 
   @Override
@@ -20,16 +22,17 @@ public class Arrow implements Movable {
 
     Arrow arrow = (Arrow) o;
 
-    return new EqualsBuilder().append(directions, arrow.directions).append(position, arrow.position).isEquals();
+    return new EqualsBuilder().append(direction, arrow.direction).append(position, arrow.position).isEquals();
   }
 
   @Override
   public int hashCode() {
-    return new HashCodeBuilder(17, 37).append(directions).append(position).toHashCode();
+    return new HashCodeBuilder(17, 37).append(direction).append(position).toHashCode();
   }
 
-  public Room move() {
-    return position;
+  @Override
+  public Room getDestination() {
+    return position.getNeighbour(direction);
   }
 
   public void setPosition(Room position) {
@@ -45,7 +48,7 @@ public class Arrow implements Movable {
     return position;
   }
 
-  public void takeAction() {
-
+  public GameAction takeAction() {
+    return new MoveAction(this);
   }
 }

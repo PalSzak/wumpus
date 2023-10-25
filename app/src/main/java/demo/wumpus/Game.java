@@ -1,11 +1,15 @@
 package demo.wumpus;
 
+import demo.wumpus.events.GameAction;
+
 public class Game {
   private final Player player;
+  private final WumpusWorld world;
   private Arrow arrow;
 
-  public Game(Player player) {
+  public Game(Player player, WumpusWorld world) {
     this.player = player;
+    this.world = world;
   }
 
   public Player getPlayer() {
@@ -17,6 +21,7 @@ public class Game {
   }
 
   protected void nextRound(){
-    arrow.takeAction();
+    GameAction gameAction = arrow.takeAction();
+    gameAction.run(world);
   }
 }

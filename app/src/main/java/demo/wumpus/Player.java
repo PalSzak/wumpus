@@ -15,7 +15,8 @@ public class Player implements Movable{
     bumpedToWall = false;
   }
 
-  public Room move() {
+  @Override
+  public Room getDestination() {
     return position.getNeighbour(faceDirection.getCurrentDirection());
   }
 
