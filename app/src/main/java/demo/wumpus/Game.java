@@ -3,7 +3,6 @@ package demo.wumpus;
 import demo.wumpus.events.GameAction;
 
 import java.util.LinkedList;
-import java.util.Optional;
 import java.util.Queue;
 
 public class Game {

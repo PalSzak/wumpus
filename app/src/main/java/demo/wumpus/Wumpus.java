@@ -1,5 +1,6 @@
 package demo.wumpus;
 
+import demo.wumpus.events.EatPlayer;
 import demo.wumpus.events.GameAction;
 
 import java.util.Collection;
@@ -44,7 +45,7 @@ public class Wumpus implements Perceptable, Figure {
 
   @Override
   public List<GameAction> takeAction(List<Percept> percepts) {
-    return Collections.emptyList();
+    return List.of(new EatPlayer(this));
   }
 
   @Override

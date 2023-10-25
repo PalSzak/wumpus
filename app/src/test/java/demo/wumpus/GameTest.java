@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -101,6 +100,19 @@ public class GameTest extends Game {
     this.nextRound();
 
     Assertions.assertEquals(new Room(1,0), player.getPosition());
+  }
+
+  @Test
+  public void wumpusEatsPlayer() {
+    replacePlayerWith(new Player(new Room(5,5)));
+
+    this.nextRound();
+
+    Assertions.assertNull(getPlayer());
+  }
+
+  private Player getPlayer() {
+    return world.getFigures().stream().filter(f -> f instanceof Player).map(p -> (Player) p).findFirst().orElseGet( () -> null);
   }
 
   private void replacePlayerWith(Player player) {
