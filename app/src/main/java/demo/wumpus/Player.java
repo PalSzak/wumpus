@@ -2,6 +2,7 @@ package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -62,7 +63,7 @@ public class Player implements Movable, Figure {
   }
 
   @Override
-  public Optional<GameAction> takeAction(List<Percept> percepts) {
-    return Optional.empty();
+  public List<GameAction> takeAction(List<Percept> percepts) {
+    return Collections.emptyList();
   }
 }

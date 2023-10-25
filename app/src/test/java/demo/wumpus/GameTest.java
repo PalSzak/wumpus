@@ -35,7 +35,7 @@ public class GameTest extends Game {
     AtomicInteger callCount = new AtomicInteger(0);
     this.addFigure(new Arrow(new Room(9,0), Direction.Directions.Up){
       @Override
-      public Optional<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(List<Percept> percepts) {
         callCount.incrementAndGet();
         return super.takeAction(percepts);
       }
@@ -49,10 +49,20 @@ public class GameTest extends Game {
   }
 
   @Test
+  public void arrowKillTheWumpusInSameCell() {
+    Arrow arrow = new Arrow(new Room(4, 5), Direction.Directions.Up);
+    this.addFigure(arrow);
+
+    this.nextRound();
+
+    Assertions.assertFalse(getWumpus().isAlive(), "Arrow should kill the wumpus");
+  }
+
+  @Test
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
     replacePlayerWith(new Player(new Room(0, 0)) {
-      public Optional<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(List<Percept> percepts) {
         playerGotPercepts.set(true);
         return super.takeAction(percepts);
       }
@@ -66,8 +76,8 @@ public class GameTest extends Game {
   @Test
   public void playerCanMoveForward() {
     Player player = new Player(new Room(0, 0)) {
-      public Optional<GameAction> takeAction(List<Percept> percepts) {
-        return Optional.of(new MoveAction(this));
+      public List<GameAction> takeAction(List<Percept> percepts) {
+        return List.of(new MoveAction(this));
       }
     };
     replacePlayerWith(player);
@@ -80,6 +90,10 @@ public class GameTest extends Game {
   private void replacePlayerWith(Player player) {
     world.getFigures().removeIf(a -> a instanceof Player);
     world.addFigure(player);
+  }
+
+  private Wumpus getWumpus() {
+    return (Wumpus) world.getFigures().stream().filter(f -> f instanceof Wumpus).findFirst().get();
   }
 
 }

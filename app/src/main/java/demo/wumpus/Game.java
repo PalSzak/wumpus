@@ -21,12 +21,8 @@ public class Game {
   }
 
   protected void nextRound(){
-    for(Figure figure : world.getFigures()) {
-      Optional<GameAction> gameAction = figure.takeAction(world.getPerceptsOf(figure));
-
-      if(gameAction.isPresent())
-        roundActionStack.add(gameAction.get());
-    }
+    for(Figure figure : world.getFigures())
+      roundActionStack.addAll(figure.takeAction(world.getPerceptsOf(figure)));
 
     while (!roundActionStack.isEmpty())
       roundActionStack.poll().run(world);

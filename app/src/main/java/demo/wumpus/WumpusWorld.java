@@ -19,6 +19,8 @@ public class WumpusWorld {
     this.gold = gold;
     this.wumpus = wumpus;
     this.pits = pits;
+
+    figures.add(wumpus);
   }
 
   public void move(Movable movable, Room moveTo) {
@@ -39,7 +41,7 @@ public class WumpusWorld {
             .orElseGet(() -> Percept.None),
         gold.getPerceptFrom(figure.getPosition()),
         figure instanceof Movable ? ((Movable) figure).hadBump() : Percept.None,
-        wumpus.hadScream() ? Percept.Scream : Percept.None
+        wumpus.hadScream()
     );
   }
 

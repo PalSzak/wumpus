@@ -1,13 +1,21 @@
 package demo.wumpus;
 
-import java.util.Collection;
+import demo.wumpus.events.GameAction;
 
-public class Wumpus implements Perceptable {
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+public class Wumpus implements Perceptable, Figure {
   private final Room position;
   private boolean scream;
+  private boolean alive;
 
   public Wumpus(Room position) {
     this.position = position;
+    scream = false;
+    alive = true;
   }
 
   @Override
@@ -19,13 +27,28 @@ public class Wumpus implements Perceptable {
 
   public void die() {
     scream = true;
+    alive = false;
   }
 
-  public boolean hadScream() {
-    return scream;
+  public boolean isAlive() {
+    return alive;
+  }
+
+  public Percept hadScream() {
+    return scream ? Percept.Scream : Percept.None;
   }
 
   public void nextRound() {
     scream = false;
+  }
+
+  @Override
+  public List<GameAction> takeAction(List<Percept> percepts) {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public Room getPosition() {
+    return position;
   }
 }

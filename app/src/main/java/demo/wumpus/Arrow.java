@@ -1,13 +1,13 @@
 package demo.wumpus;
 
 import demo.wumpus.events.GameAction;
+import demo.wumpus.events.KillTheWumpus;
 import demo.wumpus.events.MoveAction;
 import demo.wumpus.events.RemoveFigure;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import java.util.List;
-import java.util.Optional;
 
 public class Arrow implements Movable, Figure {
   private final Direction.Directions direction;
@@ -60,9 +60,9 @@ public class Arrow implements Movable, Figure {
   }
 
   @Override
-  public Optional<GameAction> takeAction(List<Percept> percepts) {
-    return Optional.of(percepts.contains(Percept.Bump)
-        ? new RemoveFigure(this)
-        : new MoveAction(this));
+  public List<GameAction> takeAction(List<Percept> percepts) {
+    return percepts.contains(Percept.Bump)
+        ? List.of(new RemoveFigure(this))
+        : List.of(new MoveAction(this), new KillTheWumpus(this));
   }
 }
