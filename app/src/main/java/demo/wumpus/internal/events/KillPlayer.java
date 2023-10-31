@@ -18,10 +18,8 @@ public class KillPlayer implements GameAction {
   public List<GameAction> run(WumpusWorld world) {
     List<GameAction> followUp = new ArrayList<>();
 
-    world.getFigures().stream()
-        .filter(f -> f instanceof Player)
-        .map(f -> (Player) f)
-        .filter(w -> w.getPosition().equals(figure.getPosition()))
+    world.getFigures(Player.class)
+        .filter(p -> p.getPosition().equals(figure.getPosition()))
         .forEach(p -> {
           followUp.add(new RemoveFigure(p));
         });

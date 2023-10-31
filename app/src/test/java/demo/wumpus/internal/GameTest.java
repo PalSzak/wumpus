@@ -4,11 +4,11 @@ import demo.wumpus.api.Percept;
 import demo.wumpus.internal.events.GameAction;
 import demo.wumpus.internal.events.MoveAction;
 import demo.wumpus.internal.*;
+import demo.wumpus.internal.events.RemoveFigure;
 import demo.wumpus.internal.figures.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -144,16 +144,16 @@ public class GameTest extends GameImpl {
   }
 
   private Player getPlayer() {
-    return getWorld().getFigures().stream().filter(f -> f instanceof Player).map(p -> (Player) p).findFirst().orElseGet( () -> null);
+    return getWorld().getFigures(Player.class).findFirst().orElseGet( () -> null);
   }
 
   private void replacePlayerWith(Player player) {
-    getWorld().getFigures().removeIf(a -> a instanceof Player);
+    getWorld().removeFigure(getPlayer());
     getWorld().addFigure(player);
   }
 
   private Wumpus getWumpus() {
-    return (Wumpus) getWorld().getFigures().stream().filter(f -> f instanceof Wumpus).findFirst().get();
+    return (Wumpus) getWorld().getFigures(Wumpus.class).findFirst().get();
   }
 
 }

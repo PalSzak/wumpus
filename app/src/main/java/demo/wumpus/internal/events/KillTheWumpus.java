@@ -20,9 +20,7 @@ public class KillTheWumpus implements GameAction{
   public List<GameAction> run(WumpusWorld world) {
     List<GameAction> followUp = new ArrayList<>();
 
-    Optional<Wumpus> prey = world.getFigures().stream()
-        .filter(f -> f instanceof Wumpus)
-        .map(f -> (Wumpus) f)
+    Optional<Wumpus> prey = world.getFigures(Wumpus.class)
         .filter(w -> w.getPosition().equals(arrow.getPosition()))
         .findFirst();
 

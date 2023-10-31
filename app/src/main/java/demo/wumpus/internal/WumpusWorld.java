@@ -5,6 +5,7 @@ import demo.wumpus.internal.figures.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class WumpusWorld {
   private static final int LOWER_COORD_BOUNDARY = -1;
@@ -53,8 +54,10 @@ public class WumpusWorld {
     figures.remove(figure);
   }
 
-  public List<Figure> getFigures() {
-    return figures;
+  public <T extends Figure> Stream<T> getFigures(Class<T> figureType) {
+    return figures.stream()
+        .filter(f -> figureType.isAssignableFrom(f.getClass()))
+        .map( f -> (T) f);
   }
 
   public void addFigure(Figure figure) {

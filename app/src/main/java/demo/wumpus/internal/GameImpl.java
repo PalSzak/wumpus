@@ -24,8 +24,9 @@ public class GameImpl implements Game {
   }
 
   protected void nextRound(){
-    for(Figure figure : world.getFigures())
-      roundActionStack.addAll(figure.takeAction(world.getPerceptsOf(figure)));
+    world.getFigures(Figure.class).forEach( figure ->
+        roundActionStack.addAll(figure.takeAction(world.getPerceptsOf(figure)))
+    );
 
     while (!roundActionStack.isEmpty())
       roundActionStack.addAll(roundActionStack.poll().run(world));
@@ -38,8 +39,7 @@ public class GameImpl implements Game {
   }
 
   private boolean isPlayerOnBoard() {
-    return world.getFigures().stream()
-        .anyMatch( f -> f instanceof Player);
+    return world.getFigures(Player.class).findAny().isPresent();
   }
 
   public WumpusWorld getWorld() {
