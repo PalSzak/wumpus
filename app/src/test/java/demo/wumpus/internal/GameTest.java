@@ -156,6 +156,20 @@ public class GameTest extends GameImpl {
     Assertions.assertNull(getPlayer(), "Player should be able to climb out.");
   }
 
+  @Test
+  public void playerCanNotClimbOutFromOtherPositions() {
+    replacePlayerWith(new Player(new Room(0,1)){
+      @Override
+      public List<GameAction> takeAction(List<Percept> percepts) {
+        return List.of(new ClimbOutFromDungeon(this));
+      }
+    });
+
+    this.nextRound();
+
+    Assertions.assertNotNull(getPlayer(), "Player shouldn't be able to climb out.");
+  }
+
 
   private Player getPlayer() {
     return getWorld().getFigures(Player.class).findFirst().orElseGet( () -> null);

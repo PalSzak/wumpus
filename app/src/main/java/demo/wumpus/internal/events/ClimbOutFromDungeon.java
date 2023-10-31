@@ -3,6 +3,7 @@ package demo.wumpus.internal.events;
 import demo.wumpus.internal.WumpusWorld;
 import demo.wumpus.internal.figures.Player;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ClimbOutFromDungeon implements GameAction {
@@ -14,6 +15,8 @@ public class ClimbOutFromDungeon implements GameAction {
 
   @Override
   public List<GameAction> run(WumpusWorld world) {
-    return List.of(new RemoveFigure(player));
+    return world.START_POSITION.equals(player.getPosition())
+        ? List.of(new RemoveFigure(player))
+        : Collections.emptyList();
   }
 }
