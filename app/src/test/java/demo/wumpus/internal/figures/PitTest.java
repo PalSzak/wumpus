@@ -10,11 +10,11 @@ class PitTest {
 
   @Test
   public void pitCausesWindInNeighbourRooms(){
-    Pit pit = new Pit(new Room(5,5));
-    Room upperNeighbour = new Room(6, 5);
-    Room lowerNeighbour = new Room(4, 5);
-    Room leftNeighbour = new Room(5, 4);
-    Room rightNeighbour = new Room(5, 4);
+    Pit pit = new Pit(Room.of(5,5));
+    Room upperNeighbour = Room.of(6, 5);
+    Room lowerNeighbour = Room.of(4, 5);
+    Room leftNeighbour = Room.of(5, 4);
+    Room rightNeighbour = Room.of(5, 4);
 
     Assertions.assertEquals(Percept.Breeze,pit.getPerceptFrom(upperNeighbour), "Pit is windy");
     Assertions.assertEquals(Percept.Breeze,pit.getPerceptFrom(lowerNeighbour), "Pit is windy");
@@ -24,7 +24,7 @@ class PitTest {
 
   @Test
   public void pitIsNotPerceptableFromFarCells(){
-    Pit pit = new Pit(new Room(5,5));
+    Pit pit = new Pit(Room.of(5,5));
     Room distantRoom = Room.START_POSITION;
 
     Assertions.assertEquals(Percept.None,pit.getPerceptFrom(distantRoom), "No wind from there");

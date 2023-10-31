@@ -6,21 +6,32 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Room {
-  public static final Room START_POSITION = new Room(0,0);
+  private static final Map<Integer, Room> CACHE = new HashMap<>();
+  public static final Room START_POSITION = Room.of(0,0);
+
+  public static Room of(int x, int y) {
+    return CACHE.computeIfAbsent(cantorPairing(x,y), k -> new Room(x,y));
+  }
+
+  private static Integer cantorPairing(int a, int b) {
+    return (a + b) * (a + b + 1) / 2 + a;
+  }
 
   private final Integer x;
   private final Integer y;
 
-  public Room(Integer x, Integer y) {
+  private Room(Integer x, Integer y) {
     this.x = x;
     this.y = y;
   }
 
   public Room getNeighbour(Direction.Directions direction) {
-    return new Room(x + direction.xOffset, y + direction.yOffset);
+    return Room.of(x + direction.xOffset, y + direction.yOffset);
   }
 
   public Collection<Room> getNeighbours() {

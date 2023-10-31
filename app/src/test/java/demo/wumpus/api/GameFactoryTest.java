@@ -11,7 +11,7 @@ public class GameFactoryTest {
   @Test
   public void basicGameRules() {
     GameImpl game = (GameImpl) new GameFactory().build();
-    Assertions.assertEquals(new Room(0, 0), game.getWorld().getFigures(Player.class).findFirst().get().getPosition(), "Start position is 0,0");
+    Assertions.assertEquals(Room.of(0,0), game.getWorld().getFigures(Player.class).findFirst().get().getPosition(), "Start position is 0,0");
   }
 
 

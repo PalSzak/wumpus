@@ -16,32 +16,35 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameTest extends GameImpl {
+  private static final Room GOLD_POSITION = Room.of(2,2);
+  private static final Room WUMPUS_POSITION = Room.of(5,5);
+  private static final Room PIT_POSITION = Room.of(3,3);
 
   public GameTest() {
     super(
-        new Player(new Room(0, 0)),
+        new Player(Room.START_POSITION),
         new WumpusWorld(
             10,
-            new Gold(new Room(2, 2)),
-            new Wumpus(new Room(5, 5)),
-            List.of(new Pit(new Room(2,2))))
+            new Gold(GOLD_POSITION),
+            new Wumpus(WUMPUS_POSITION),
+            List.of(new Pit(PIT_POSITION)))
     );
   }
 
   @Test
   public void arrowIsMovingForwardInEachRound() {
-    Arrow arrow = new Arrow(new Room(0, 0), Direction.Directions.Up);
+    Arrow arrow = new Arrow(Room.START_POSITION, Direction.Directions.Up);
     this.addFigure(arrow);
 
     this.nextRound();
 
-    Assertions.assertEquals(new Room(1,0), arrow.getPosition());
+    Assertions.assertEquals(Room.of(1,0), arrow.getPosition());
   }
 
   @Test
   public void arrowHasBeenRemovedWhenItBumpedToWall() {
     AtomicInteger callCount = new AtomicInteger(0);
-    this.addFigure(new Arrow(new Room(9,0), Direction.Directions.Up){
+    this.addFigure(new Arrow(Room.of(9,0), Direction.Directions.Up){
       @Override
       public List<GameAction> takeAction(List<Percept> percepts) {
         callCount.incrementAndGet();
@@ -58,7 +61,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void arrowKillTheWumpusInSameCell() {
-    Arrow arrow = new Arrow(new Room(4, 5), Direction.Directions.Up);
+    Arrow arrow = new Arrow(Room.of(4, 5), Direction.Directions.Up);
     this.addFigure(arrow);
 
     this.nextRound();
@@ -69,7 +72,7 @@ public class GameTest extends GameImpl {
   @Test
   public void arrowHasBeenRemovedWhenItHitsTheWumpus() {
     AtomicInteger callCount = new AtomicInteger(0);
-    this.addFigure(new Arrow(new Room(4, 5), Direction.Directions.Up){
+    this.addFigure(new Arrow(Room.of(4, 5), Direction.Directions.Up){
       @Override
       public List<GameAction> takeAction(List<Percept> percepts) {
         callCount.incrementAndGet();
@@ -85,7 +88,7 @@ public class GameTest extends GameImpl {
   @Test
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
-    replacePlayerWith(new Player(new Room(0, 0)) {
+    replacePlayerWith(new Player(Room.START_POSITION) {
       public List<GameAction> takeAction(List<Percept> percepts) {
         playerGotPercepts.set(true);
         return super.takeAction(percepts);
@@ -99,7 +102,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void playerCanMoveForward() {
-    Player player = new Player(new Room(0, 0)) {
+    Player player = new Player(Room.START_POSITION) {
       public List<GameAction> takeAction(List<Percept> percepts) {
         return List.of(new MoveAction(this));
       }
@@ -108,12 +111,12 @@ public class GameTest extends GameImpl {
 
     this.nextRound();
 
-    Assertions.assertEquals(new Room(1,0), player.getPosition());
+    Assertions.assertEquals(Room.of(1,0), player.getPosition());
   }
 
   @Test
   public void wumpusEatsPlayer() {
-    replacePlayerWith(new Player(new Room(5,5)));
+    replacePlayerWith(new Player(WUMPUS_POSITION));
 
     this.nextRound();
 
@@ -122,7 +125,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void gameEndsWhenNoPlayerInDungeon() throws InterruptedException {
-    replacePlayerWith(new Player(new Room(5,5)));
+    replacePlayerWith(new Player(WUMPUS_POSITION));
     ExecutorService executorService = Executors.newFixedThreadPool(1);
 
     executorService.execute(this);
@@ -135,7 +138,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void pitKillsPlayer() {
-    replacePlayerWith(new Player(new Room(2,2)));
+    replacePlayerWith(new Player(PIT_POSITION));
 
     this.nextRound();
 
@@ -144,7 +147,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void playerCanClimbOutFromStartPosition() {
-    replacePlayerWith(new Player(new Room(0,0)){
+    replacePlayerWith(new Player(Room.START_POSITION){
       @Override
       public List<GameAction> takeAction(List<Percept> percepts) {
         return List.of(new ClimbOutFromDungeon(this));
@@ -158,7 +161,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void playerCanNotClimbOutFromOtherPositions() {
-    replacePlayerWith(new Player(new Room(0,1)){
+    replacePlayerWith(new Player(Room.of(0,1)){
       @Override
       public List<GameAction> takeAction(List<Percept> percepts) {
         return List.of(new ClimbOutFromDungeon(this));

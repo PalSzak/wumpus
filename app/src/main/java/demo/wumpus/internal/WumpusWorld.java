@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class WumpusWorld {
-  public static final Room START_POSITION = new Room(0,0);
   private static final int LOWER_COORD_BOUNDARY = -1;
 
   private final int upperCoordBoundary;

@@ -16,25 +16,25 @@ public class PlayerTest {
 
   @BeforeEach
   public void init() {
-    currentPlayerCoord = new Room(5, 5);
+    currentPlayerCoord = Room.of(5, 5);
     player = new Player(currentPlayerCoord);
   }
 
   @Test
   public void playerCanMove() {
-    Assertions.assertEquals(new Room(6,5), player.getDestination(), "Player steps to it's direction");
+    Assertions.assertEquals(Room.of(6,5), player.getDestination(), "Player steps to it's direction");
   }
 
   @Test
   public void playerCanTurnLeft() {
     player.turnLeft();
-    Assertions.assertEquals(new Room(5,4), player.getDestination(), "Player steps to it's direction");
+    Assertions.assertEquals(Room.of(5,4), player.getDestination(), "Player steps to it's direction");
   }
 
   @Test
   public void playerCanTurnRight() {
     player.turnRight();
-    Assertions.assertEquals(new Room(5,6), player.getDestination(), "Player steps to it's direction");
+    Assertions.assertEquals(Room.of(5,6), player.getDestination(), "Player steps to it's direction");
   }
 
   @Test

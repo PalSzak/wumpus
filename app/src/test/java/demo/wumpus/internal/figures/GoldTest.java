@@ -17,6 +17,6 @@ class GoldTest {
   @Test
   public void goldIsNotPerceptibleFromOtherRooms() {
     Gold gold = new Gold(Room.START_POSITION);
-    Assertions.assertEquals(Percept.None, gold.getPerceptFrom(new Room(1,1)));
+    Assertions.assertEquals(Percept.None, gold.getPerceptFrom(Room.of(1,1)));
   }
 }

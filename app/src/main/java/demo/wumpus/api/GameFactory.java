@@ -13,10 +13,10 @@ public class GameFactory {
   private Player player;
 
   public GameFactory() {
-    player = new Player(new Room(0, 0));
+    player = new Player(Room.START_POSITION);
   }
 
   public Game build() {
-    return new GameImpl(player, new WumpusWorld(1,new Gold(new Room(0,0)),new Wumpus(new Room(0,0)), Collections.emptyList()));
+    return new GameImpl(player, new WumpusWorld(1,new Gold(Room.START_POSITION),new Wumpus(Room.START_POSITION), Collections.emptyList()));
   }
 }

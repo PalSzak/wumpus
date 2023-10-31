@@ -1,5 +1,6 @@
 package demo.wumpus.internal.events;
 
+import demo.wumpus.internal.Room;
 import demo.wumpus.internal.WumpusWorld;
 import demo.wumpus.internal.figures.Player;
 
@@ -15,7 +16,7 @@ public class ClimbOutFromDungeon implements GameAction {
 
   @Override
   public List<GameAction> run(WumpusWorld world) {
-    return world.START_POSITION.equals(player.getPosition())
+    return Room.START_POSITION.equals(player.getPosition())
         ? List.of(new RemoveFigure(player))
         : Collections.emptyList();
   }

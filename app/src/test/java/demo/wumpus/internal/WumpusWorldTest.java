@@ -20,11 +20,11 @@ class WumpusWorldTest {
   @BeforeEach
   public void setUp() {
     player = new Player(Room.START_POSITION);
-    gold = new Gold(new Room(0,0));
-    wumpus = new Wumpus(new Room(5,5));
+    gold = new Gold(Room.START_POSITION);
+    wumpus = new Wumpus(Room.of(5,5));
     pits = List.of(
-        new Pit(new Room(0,1)),
-        new Pit(new Room(9,9))
+        new Pit(Room.of(0,1)),
+        new Pit(Room.of(9,9))
     );
     wumpusWorld = new WumpusWorld(10, gold, wumpus, pits);
     smallWumpusWorld = new WumpusWorld(1, gold, wumpus, pits);
@@ -32,7 +32,7 @@ class WumpusWorldTest {
 
   @Test
   public void playerCanMove() {
-    Player player = new Player(new Room(0, 0));
+    Player player = new Player(Room.START_POSITION);
     Room moveTo = player.getDestination();
 
     wumpusWorld.move(player, moveTo);
@@ -42,7 +42,7 @@ class WumpusWorldTest {
 
   @Test
   public void arrowCanMove() {
-    Arrow arrow = new Arrow(new Room(0, 0), Direction.Directions.Up);
+    Arrow arrow = new Arrow(Room.START_POSITION, Direction.Directions.Up);
     Room moveTo = arrow.getDestination();
     wumpusWorld.move(arrow, moveTo);
 
@@ -95,7 +95,7 @@ class WumpusWorldTest {
 
   @Test
   public void wumpusIsStinky() {
-    Player player = new Player(new Room(5,5));
+    Player player = new Player(Room.of(5,5));
     List<Percept> percepts = wumpusWorld.getPerceptsOf(player);
 
     Assertions.assertTrue(percepts.contains(Percept.Stench));
