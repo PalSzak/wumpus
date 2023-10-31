@@ -5,6 +5,8 @@ import demo.wumpus.internal.figures.Player;
 import demo.wumpus.internal.Room;
 import demo.wumpus.internal.WumpusWorld;
 
+import java.util.Collections;
+
 public class GameFactory {
   private Player player;
 
@@ -13,6 +15,6 @@ public class GameFactory {
   }
 
   public Game build() {
-    return new GameImpl(player, new WumpusWorld(1,null,null,null));
+    return new GameImpl(player, new WumpusWorld(1,null,null, Collections.emptyList()));
   }
 }

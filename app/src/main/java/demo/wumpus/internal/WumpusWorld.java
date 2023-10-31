@@ -24,6 +24,7 @@ public class WumpusWorld {
     this.pits = pits;
 
     figures.add(wumpus);
+    figures.addAll(pits);
   }
 
   public void move(Movable movable, Room moveTo) {

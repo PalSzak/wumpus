@@ -4,10 +4,7 @@ import demo.wumpus.api.Percept;
 import demo.wumpus.internal.events.GameAction;
 import demo.wumpus.internal.events.MoveAction;
 import demo.wumpus.internal.*;
-import demo.wumpus.internal.figures.Arrow;
-import demo.wumpus.internal.figures.Gold;
-import demo.wumpus.internal.figures.Player;
-import demo.wumpus.internal.figures.Wumpus;
+import demo.wumpus.internal.figures.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +21,11 @@ public class GameTest extends GameImpl {
   public GameTest() {
     super(
         new Player(new Room(0, 0)),
-        new WumpusWorld(10, new Gold(new Room(2, 2)), new Wumpus(new Room(5, 5)), Collections.emptyList())
+        new WumpusWorld(
+            10,
+            new Gold(new Room(2, 2)),
+            new Wumpus(new Room(5, 5)),
+            List.of(new Pit(new Room(2,2))))
     );
   }
 
@@ -131,6 +132,15 @@ public class GameTest extends GameImpl {
     boolean terminated = executorService.awaitTermination(1, TimeUnit.SECONDS);
 
     Assertions.assertTrue(terminated, "Player should die miserable dead.");
+  }
+
+  @Test
+  public void pitKillsPlayer() {
+    replacePlayerWith(new Player(new Room(2,2)));
+
+    this.nextRound();
+
+    Assertions.assertNull(getPlayer());
   }
 
   private Player getPlayer() {

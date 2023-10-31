@@ -2,8 +2,12 @@ package demo.wumpus.internal.figures;
 
 import demo.wumpus.api.Percept;
 import demo.wumpus.internal.Room;
+import demo.wumpus.internal.events.KillPlayer;
+import demo.wumpus.internal.events.GameAction;
 
-public class Pit implements Perceptable{
+import java.util.List;
+
+public class Pit implements Perceptable, Figure{
   private final Room position;
 
   public Pit(Room position) {
@@ -19,5 +23,15 @@ public class Pit implements Perceptable{
     }
 
     return result;
+  }
+
+  @Override
+  public List<GameAction> takeAction(List<Percept> percepts) {
+    return List.of(new KillPlayer(this));
+  }
+
+  @Override
+  public Room getPosition() {
+    return position;
   }
 }

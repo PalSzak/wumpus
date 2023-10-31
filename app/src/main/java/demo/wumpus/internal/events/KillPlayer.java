@@ -1,17 +1,17 @@
 package demo.wumpus.internal.events;
 
+import demo.wumpus.internal.figures.Figure;
 import demo.wumpus.internal.figures.Player;
-import demo.wumpus.internal.figures.Wumpus;
 import demo.wumpus.internal.WumpusWorld;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EatPlayer implements GameAction{
-  private final Wumpus wumpus;
+public class KillPlayer implements GameAction {
+  private final Figure figure;
 
-  public EatPlayer(Wumpus wumpus) {
-    this.wumpus = wumpus;
+  public KillPlayer(Figure figure) {
+    this.figure = figure;
   }
 
   @Override
@@ -21,7 +21,7 @@ public class EatPlayer implements GameAction{
     world.getFigures().stream()
         .filter(f -> f instanceof Player)
         .map(f -> (Player) f)
-        .filter(w -> w.getPosition().equals(wumpus.getPosition()))
+        .filter(w -> w.getPosition().equals(figure.getPosition()))
         .forEach(p -> {
           followUp.add(new RemoveFigure(p));
         });
