@@ -1,10 +1,9 @@
 package demo.wumpus.internal;
 
 import demo.wumpus.api.Percept;
+import demo.wumpus.internal.events.ClimbOutFromDungeon;
 import demo.wumpus.internal.events.GameAction;
 import demo.wumpus.internal.events.MoveAction;
-import demo.wumpus.internal.*;
-import demo.wumpus.internal.events.RemoveFigure;
 import demo.wumpus.internal.figures.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -142,6 +141,21 @@ public class GameTest extends GameImpl {
 
     Assertions.assertNull(getPlayer());
   }
+
+  @Test
+  public void playerCanClimbOutFromStartPosition() {
+    replacePlayerWith(new Player(new Room(0,0)){
+      @Override
+      public List<GameAction> takeAction(List<Percept> percepts) {
+        return List.of(new ClimbOutFromDungeon(this));
+      }
+    });
+
+    this.nextRound();
+
+    Assertions.assertNull(getPlayer(), "Player should be able to climb out.");
+  }
+
 
   private Player getPlayer() {
     return getWorld().getFigures(Player.class).findFirst().orElseGet( () -> null);
