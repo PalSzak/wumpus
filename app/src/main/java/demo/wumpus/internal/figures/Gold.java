@@ -2,8 +2,12 @@ package demo.wumpus.internal.figures;
 
 import demo.wumpus.api.Percept;
 import demo.wumpus.internal.Room;
+import demo.wumpus.internal.events.GameAction;
 
-public class Gold implements Perceptable {
+import java.util.Collections;
+import java.util.List;
+
+public class Gold implements Perceptable, Figure {
 
   private final Room position;
 
@@ -18,5 +22,15 @@ public class Gold implements Perceptable {
       result = Percept.Glitter;
     }
     return result;
+  }
+
+  @Override
+  public List<GameAction> takeAction(List<Percept> percepts) {
+    return Collections.emptyList();
+  }
+
+  @Override
+  public Room getPosition() {
+    return position;
   }
 }

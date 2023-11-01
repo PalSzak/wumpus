@@ -3,6 +3,7 @@ package demo.wumpus.internal;
 import demo.wumpus.api.Percept;
 import demo.wumpus.internal.events.ClimbOutFromDungeon;
 import demo.wumpus.internal.events.GameAction;
+import demo.wumpus.internal.events.GrabTheGold;
 import demo.wumpus.internal.events.MoveAction;
 import demo.wumpus.internal.figures.*;
 import org.junit.jupiter.api.Assertions;
@@ -171,6 +172,38 @@ public class GameTest extends GameImpl {
     this.nextRound();
 
     Assertions.assertNotNull(getPlayer(), "Player shouldn't be able to climb out.");
+  }
+
+  @Test
+  public void playerCanGrabGold() {
+    replacePlayerWith(new Player(GOLD_POSITION){
+      @Override
+      public List<GameAction> takeAction(List<Percept> percepts) {
+        return List.of(new GrabTheGold(this));
+      }
+    });
+
+    this.nextRound();
+
+    Assertions.assertNull(getGold(), "Gold should remove when grabbed");
+  }
+
+  @Test
+  public void playerCanNotGrabGoldFromOtherPosition() {
+    replacePlayerWith(new Player(Room.START_POSITION){
+      @Override
+      public List<GameAction> takeAction(List<Percept> percepts) {
+        return List.of(new GrabTheGold(this));
+      }
+    });
+
+    this.nextRound();
+
+    Assertions.assertNotNull(getGold(), "Gold is grabbable only from same cell");
+  }
+
+  private Gold getGold() {
+    return getWorld().getFigures(Gold.class).findFirst().orElseGet( () -> null);
   }
 
 
