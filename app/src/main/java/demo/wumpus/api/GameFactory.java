@@ -17,13 +17,13 @@ public class GameFactory {
   public static int PIT_COUNT = 3;
   private Player player;
   private List<Room> occupiedRooms;
-
+  private Random random;
 
   public GameFactory() {
     occupiedRooms = new LinkedList<>();
     player = new Player(Room.START_POSITION);
     occupiedRooms.add(Room.START_POSITION);
-
+    random = new Random();
   }
 
   public Game build() {
@@ -31,13 +31,24 @@ public class GameFactory {
         player,
         new WumpusWorld(
             1,
-            new Gold(Room.START_POSITION),
-            new Wumpus(Room.START_POSITION),
+            new Gold(getAFreeRoom()),
+            new Wumpus(getAFreeRoom()),
             List.of(
-                new Pit(Room.START_POSITION),
-                new Pit(Room.START_POSITION),
-                new Pit(Room.START_POSITION)
+                new Pit(getAFreeRoom()),
+                new Pit(getAFreeRoom()),
+                new Pit(getAFreeRoom())
             ))
     );
+  }
+
+  private Room getAFreeRoom() {
+    Room aFreeRoom;
+
+    do {
+      aFreeRoom = Room.of(random.nextInt(), random.nextInt());
+    } while(occupiedRooms.contains(aFreeRoom));
+    occupiedRooms.add(aFreeRoom);
+
+    return aFreeRoom;
   }
 }

@@ -22,7 +22,7 @@ public class GameFactoryTest {
     Assertions.assertEquals(Room.START_POSITION, game.getWorld().getFigures(Player.class).findFirst().get().getPosition(), "Start position is 0,0");
     Assertions.assertEquals(GameFactory.PIT_COUNT, game.getWorld().getFigures(Pit.class).count(), "Pit count is 3 x player count");
     Assertions.assertEquals(GameFactory.WUMPUS_COUNT, game.getWorld().getFigures(Wumpus.class).count(), "Wumpus count equals with player count");
-   // Assertions.assertEquals(1, maxFigureCountInRooms(game.getWorld().getFigures()),"Every object is in different cell");
+    Assertions.assertEquals(1, maxFigureCountInRooms(game.getWorld().getFigures()),"Every object is in different cell");
   }
 
   private int maxFigureCountInRooms(Stream<Figure> figures) {
