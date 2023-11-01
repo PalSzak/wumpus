@@ -15,6 +15,8 @@ import java.util.Random;
 public class GameFactory {
   public static final int WUMPUS_COUNT = 1;
   public static int PIT_COUNT = 3;
+  public static int GRID_SIZE = 3;
+
   private Player player;
   private List<Room> occupiedRooms;
   private Random random;
@@ -45,7 +47,7 @@ public class GameFactory {
     Room aFreeRoom;
 
     do {
-      aFreeRoom = Room.of(random.nextInt(), random.nextInt());
+      aFreeRoom = Room.of(random.nextInt(GRID_SIZE), random.nextInt(GRID_SIZE));
     } while(occupiedRooms.contains(aFreeRoom));
     occupiedRooms.add(aFreeRoom);
 

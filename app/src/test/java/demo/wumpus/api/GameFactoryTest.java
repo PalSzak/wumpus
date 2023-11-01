@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class GameFactoryTest {
@@ -23,6 +24,13 @@ public class GameFactoryTest {
     Assertions.assertEquals(GameFactory.PIT_COUNT, game.getWorld().getFigures(Pit.class).count(), "Pit count is 3 x player count");
     Assertions.assertEquals(GameFactory.WUMPUS_COUNT, game.getWorld().getFigures(Wumpus.class).count(), "Wumpus count equals with player count");
     Assertions.assertEquals(1, maxFigureCountInRooms(game.getWorld().getFigures()),"Every object is in different cell");
+    Assertions.assertTrue(figurePositionsAreWithinBoundaries(GameFactory.GRID_SIZE, game.getWorld().getFigures()), "Grid size is 3 x player count");
+  }
+
+  private boolean figurePositionsAreWithinBoundaries(int gridSize, Stream<Figure> figures) {
+    return figures
+        .flatMapToInt((figure -> IntStream.of(figure.getPosition().getX(), figure.getPosition().getY())))
+        .max().getAsInt() < gridSize;
   }
 
   private int maxFigureCountInRooms(Stream<Figure> figures) {
