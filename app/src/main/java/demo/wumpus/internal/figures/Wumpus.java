@@ -5,6 +5,7 @@ import demo.wumpus.internal.Room;
 import demo.wumpus.internal.events.KillPlayer;
 import demo.wumpus.internal.events.GameAction;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -45,7 +46,12 @@ public class Wumpus implements Perceptable, Figure {
 
   @Override
   public List<GameAction> takeAction(List<Percept> percepts) {
-    return List.of(new KillPlayer(this));
+    List<GameAction> wumpusActions = new ArrayList<>();
+
+    if(isAlive())
+      wumpusActions.add(new KillPlayer(this));
+
+    return wumpusActions;
   }
 
   @Override

@@ -125,6 +125,16 @@ public class GameTest extends GameImpl {
   }
 
   @Test
+  public void deadWumpusWontEatPlayer() {
+    replacePlayerWith(new Player(WUMPUS_POSITION));
+    getWumpus().die();
+
+    this.nextRound();
+
+    Assertions.assertNotNull(getPlayer());
+  }
+
+  @Test
   public void gameEndsWhenNoPlayerInDungeon() throws InterruptedException {
     replacePlayerWith(new Player(WUMPUS_POSITION));
     ExecutorService executorService = Executors.newFixedThreadPool(1);
