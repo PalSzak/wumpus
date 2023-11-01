@@ -53,6 +53,10 @@ public class WumpusWorld {
     figures.remove(figure);
   }
 
+  public Stream<Figure> getFigures() {
+    return getFigures(Figure.class);
+  }
+
   public <T extends Figure> Stream<T> getFigures(Class<T> figureType) {
     return figures.stream()
         .filter(f -> figureType.isAssignableFrom(f.getClass()))
@@ -62,4 +66,5 @@ public class WumpusWorld {
   public void addFigure(Figure figure) {
     figures.add(figure);
   }
+
 }
