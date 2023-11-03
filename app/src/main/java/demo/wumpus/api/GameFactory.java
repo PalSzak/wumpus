@@ -19,11 +19,11 @@ public class GameFactory {
 
   private Player player;
   private List<Room> occupiedRooms;
-  private Random random;
+  Random random;
 
-  public GameFactory() {
+  public GameFactory(Agent agent) {
     occupiedRooms = new LinkedList<>();
-    player = new Player(Room.START_POSITION);
+    player = new Player(Room.START_POSITION, agent);
     occupiedRooms.add(Room.START_POSITION);
     random = new Random();
   }
