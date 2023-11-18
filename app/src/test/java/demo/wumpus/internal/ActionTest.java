@@ -31,7 +31,6 @@ public class ActionTest {
 
   @Test
   void turnLeft() {
-
     GameImpl game = buildGame(new Agent() {
       int i = 0;
       @Override
@@ -49,6 +48,27 @@ public class ActionTest {
 
     Player player = game.getWorld().getFigures(Player.class).findAny().get();
     Assertions.assertEquals(Room.of(5,4), player.getPosition(), "Turn Left");
+  }
+
+  @Test
+  void turnRight(){
+    GameImpl game = buildGame(new Agent() {
+      int i = 0;
+      @Override
+      public Action makeMove(List<Percept> percepts) {
+        return switch (++i) {
+          case 1 -> Action.TURN_RIGHT;
+          case 2 -> Action.GO_FORWARD;
+          default -> Action.NO_OP;
+        };
+      }
+    });
+
+    game.nextRound();
+    game.nextRound();
+
+    Player player = game.getWorld().getFigures(Player.class).findAny().get();
+    Assertions.assertEquals(Room.of(5,6), player.getPosition(), "Turn Right");
   }
 
   private GameImpl buildGame(Agent agent) {
