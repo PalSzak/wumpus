@@ -5,10 +5,10 @@ import java.util.List;
 public class Direction {
 
   public enum Directions {
-    Up(1, 0),
-    Right(0, 1),
-    Down(-1, 0),
-    Left(0, -1);
+    Up(0, 1),
+    Right(1, 0),
+    Down(0, -1),
+    Left(-1, 0);
 
     public Integer xOffset;
     public Integer yOffset;

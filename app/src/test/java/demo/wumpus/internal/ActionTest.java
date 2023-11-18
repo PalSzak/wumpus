@@ -28,7 +28,7 @@ public class ActionTest {
     game.nextRound();
 
     Player player = game.getWorld().getFigures(Player.class).findAny().get();
-    Assertions.assertEquals(Room.of(6,5), player.getPosition(), "Go Forward");
+    Assertions.assertEquals(Room.of(5,6), player.getPosition(), "Go Forward");
   }
 
   @Test
@@ -49,7 +49,7 @@ public class ActionTest {
     game.nextRound();
 
     Player player = game.getWorld().getFigures(Player.class).findAny().get();
-    Assertions.assertEquals(Room.of(5,4), player.getPosition(), "Turn Left");
+    Assertions.assertEquals(Room.of(4,5), player.getPosition(), "Turn Left");
   }
 
   @Test
@@ -70,7 +70,7 @@ public class ActionTest {
     game.nextRound();
 
     Player player = game.getWorld().getFigures(Player.class).findAny().get();
-    Assertions.assertEquals(Room.of(5,6), player.getPosition(), "Turn Right");
+    Assertions.assertEquals(Room.of(6,5), player.getPosition(), "Turn Right");
   }
 
   @Test

@@ -38,9 +38,9 @@ public class GameFactoryTest {
   ╟─┼─┼─╢
  0║A│ │ ║
   ╚═╧═╧═╝
-   0 1 2 >X
+   0 1 2 > X
  */
-//  @Test
+  @Test
   public void sampleGame() {
     GameFactory gameFactory = new GameFactory(new Agent() {
       int currentRound = 0;

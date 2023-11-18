@@ -39,13 +39,13 @@ public class GameTest extends GameImpl {
 
     this.nextRound();
 
-    Assertions.assertEquals(Room.of(1,0), arrow.getPosition());
+    Assertions.assertEquals(Room.of(0,1), arrow.getPosition());
   }
 
   @Test
   public void arrowHasBeenRemovedWhenItBumpedToWall() {
     AtomicInteger callCount = new AtomicInteger(0);
-    this.addFigure(new Arrow(Room.of(9,0), Direction.Directions.Up){
+    this.addFigure(new Arrow(Room.of(0,9), Direction.Directions.Up){
       @Override
       public List<GameAction> takeAction(WumpusWorld world) {
         callCount.incrementAndGet();
@@ -62,7 +62,7 @@ public class GameTest extends GameImpl {
 
   @Test
   public void arrowKillTheWumpusInSameCell() {
-    Arrow arrow = new Arrow(Room.of(4, 5), Direction.Directions.Up);
+    Arrow arrow = new Arrow(Room.of(5, 4), Direction.Directions.Up);
     this.addFigure(arrow);
 
     this.nextRound();
@@ -73,7 +73,7 @@ public class GameTest extends GameImpl {
   @Test
   public void arrowHasBeenRemovedWhenItHitsTheWumpus() {
     AtomicInteger callCount = new AtomicInteger(0);
-    this.addFigure(new Arrow(Room.of(4, 5), Direction.Directions.Up){
+    this.addFigure(new Arrow(Room.of(5, 4), Direction.Directions.Up){
       @Override
       public List<GameAction> takeAction(WumpusWorld world) {
         callCount.incrementAndGet();
@@ -113,7 +113,7 @@ public class GameTest extends GameImpl {
 
     this.nextRound();
 
-    Assertions.assertEquals(Room.of(1,0), player.getPosition());
+    Assertions.assertEquals(Room.of(0,1), player.getPosition());
   }
 
   @Test

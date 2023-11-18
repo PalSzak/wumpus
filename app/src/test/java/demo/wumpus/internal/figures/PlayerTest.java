@@ -22,19 +22,19 @@ public class PlayerTest {
 
   @Test
   public void playerCanMove() {
-    Assertions.assertEquals(Room.of(6,5), player.getDestination(), "Player steps to it's direction");
+    Assertions.assertEquals(Room.of(5,6), player.getDestination(), "Player steps to it's direction");
   }
 
   @Test
   public void playerCanTurnLeft() {
     player.turnLeft();
-    Assertions.assertEquals(Room.of(5,4), player.getDestination(), "Player steps to it's direction");
+    Assertions.assertEquals(Room.of(4,5), player.getDestination(), "Player steps to it's direction");
   }
 
   @Test
   public void playerCanTurnRight() {
     player.turnRight();
-    Assertions.assertEquals(Room.of(5,6), player.getDestination(), "Player steps to it's direction");
+    Assertions.assertEquals(Room.of(6,5), player.getDestination(), "Player steps to it's direction");
   }
 
   @Test

@@ -32,7 +32,7 @@ public class GameFactory {
     return new GameImpl(
         player,
         new WumpusWorld(
-            1,
+            GRID_SIZE,
             new Gold(getAFreeRoom()),
             new Wumpus(getAFreeRoom()),
             List.of(
