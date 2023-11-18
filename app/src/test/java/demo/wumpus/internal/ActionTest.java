@@ -3,6 +3,7 @@ package demo.wumpus.internal;
 import demo.wumpus.api.Action;
 import demo.wumpus.api.Agent;
 import demo.wumpus.api.Percept;
+import demo.wumpus.internal.figures.Arrow;
 import demo.wumpus.internal.figures.Gold;
 import demo.wumpus.internal.figures.Player;
 import demo.wumpus.internal.figures.Wumpus;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class ActionTest {
 
@@ -51,7 +53,7 @@ public class ActionTest {
   }
 
   @Test
-  void turnRight(){
+  void turnRight() {
     GameImpl game = buildGame(new Agent() {
       int i = 0;
       @Override
@@ -69,6 +71,21 @@ public class ActionTest {
 
     Player player = game.getWorld().getFigures(Player.class).findAny().get();
     Assertions.assertEquals(Room.of(5,6), player.getPosition(), "Turn Right");
+  }
+
+  @Test
+  void canShoot() {
+    GameImpl game = buildGame(new Agent() {
+      @Override
+      public Action makeMove(List<Percept> percepts) {
+        return Action.SHOOT;
+      }
+    });
+
+    game.nextRound();
+
+    Optional<Arrow> arrow = game.getWorld().getFigures(Arrow.class).findAny();
+    Assertions.assertTrue(arrow.isPresent(), "Arrow shoot");
   }
 
   private GameImpl buildGame(Agent agent) {
