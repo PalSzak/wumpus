@@ -25,7 +25,7 @@ public class GameImpl implements Game {
 
   protected void nextRound(){
     world.getFigures(Figure.class).forEach( figure ->
-        roundActionStack.addAll(figure.takeAction(world.getPerceptsOf(figure)))
+        roundActionStack.addAll(figure.takeAction(getWorld()))
     );
 
     while (!roundActionStack.isEmpty())

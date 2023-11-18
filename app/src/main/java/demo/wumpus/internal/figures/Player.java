@@ -5,6 +5,7 @@ import demo.wumpus.api.Agent;
 import demo.wumpus.api.Percept;
 import demo.wumpus.internal.Direction;
 import demo.wumpus.internal.Room;
+import demo.wumpus.internal.WumpusWorld;
 import demo.wumpus.internal.events.*;
 
 import java.util.Collections;
@@ -79,8 +80,8 @@ public class Player implements Movable, Figure {
   }
 
   @Override
-  public List<GameAction> takeAction(List<Percept> percepts) {
-    return switch(agent.makeMove(percepts)) {
+  public List<GameAction> takeAction(WumpusWorld world) {
+    return switch(agent.makeMove(world.getPerceptsOf(this))) {
       case GO_FORWARD -> List.of(new MoveAction(this));
       case TURN_LEFT -> List.of(new TurnLeft(this));
       case TURN_RIGHT -> List.of(new TurnRight(this));

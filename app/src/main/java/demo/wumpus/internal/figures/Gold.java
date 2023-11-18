@@ -2,6 +2,7 @@ package demo.wumpus.internal.figures;
 
 import demo.wumpus.api.Percept;
 import demo.wumpus.internal.Room;
+import demo.wumpus.internal.WumpusWorld;
 import demo.wumpus.internal.events.GameAction;
 
 import java.util.Collections;
@@ -25,7 +26,7 @@ public class Gold implements Perceptable, Figure {
   }
 
   @Override
-  public List<GameAction> takeAction(List<Percept> percepts) {
+  public List<GameAction> takeAction(WumpusWorld world) {
     return Collections.emptyList();
   }
 

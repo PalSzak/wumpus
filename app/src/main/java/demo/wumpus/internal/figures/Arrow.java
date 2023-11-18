@@ -3,6 +3,7 @@ package demo.wumpus.internal.figures;
 import demo.wumpus.api.Percept;
 import demo.wumpus.internal.Direction;
 import demo.wumpus.internal.Room;
+import demo.wumpus.internal.WumpusWorld;
 import demo.wumpus.internal.events.GameAction;
 import demo.wumpus.internal.events.KillTheWumpus;
 import demo.wumpus.internal.events.MoveAction;
@@ -63,8 +64,8 @@ public class Arrow implements Movable, Figure {
   }
 
   @Override
-  public List<GameAction> takeAction(List<Percept> percepts) {
-    return percepts.contains(Percept.Bump)
+  public List<GameAction> takeAction(WumpusWorld world) {
+    return Percept.Bump.equals(hadBump())
         ? List.of(new RemoveFigure(this))
         : List.of(new MoveAction(this), new KillTheWumpus(this));
   }

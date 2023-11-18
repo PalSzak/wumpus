@@ -47,9 +47,9 @@ public class GameTest extends GameImpl {
     AtomicInteger callCount = new AtomicInteger(0);
     this.addFigure(new Arrow(Room.of(9,0), Direction.Directions.Up){
       @Override
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         callCount.incrementAndGet();
-        return super.takeAction(percepts);
+        return super.takeAction(world);
       }
     });
     this.nextRound();
@@ -75,9 +75,9 @@ public class GameTest extends GameImpl {
     AtomicInteger callCount = new AtomicInteger(0);
     this.addFigure(new Arrow(Room.of(4, 5), Direction.Directions.Up){
       @Override
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         callCount.incrementAndGet();
-        return super.takeAction(percepts);
+        return super.takeAction(world);
       }
     });
     this.nextRound();
@@ -90,9 +90,9 @@ public class GameTest extends GameImpl {
   public void playerGetsTheirPerceptsInEachRound() {
     AtomicBoolean playerGotPercepts = new AtomicBoolean(false);
     replacePlayerWith(new Player(Room.START_POSITION) {
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         playerGotPercepts.set(true);
-        return super.takeAction(percepts);
+        return super.takeAction(world);
       }
     });
 
@@ -104,7 +104,8 @@ public class GameTest extends GameImpl {
   @Test
   public void playerCanMoveForward() {
     Player player = new Player(Room.START_POSITION) {
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      @Override
+      public List<GameAction> takeAction(WumpusWorld world) {
         return List.of(new MoveAction(this));
       }
     };
@@ -160,7 +161,7 @@ public class GameTest extends GameImpl {
   public void playerCanClimbOutFromStartPosition() {
     replacePlayerWith(new Player(Room.START_POSITION){
       @Override
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         return List.of(new ClimbOutFromDungeon(this));
       }
     });
@@ -174,7 +175,7 @@ public class GameTest extends GameImpl {
   public void playerCanNotClimbOutFromOtherPositions() {
     replacePlayerWith(new Player(Room.of(0,1)){
       @Override
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         return List.of(new ClimbOutFromDungeon(this));
       }
     });
@@ -188,7 +189,7 @@ public class GameTest extends GameImpl {
   public void playerCanGrabGold() {
     replacePlayerWith(new Player(GOLD_POSITION){
       @Override
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         return List.of(new GrabTheGold(this));
       }
     });
@@ -202,7 +203,7 @@ public class GameTest extends GameImpl {
   public void playerCanNotGrabGoldFromOtherPosition() {
     replacePlayerWith(new Player(Room.START_POSITION){
       @Override
-      public List<GameAction> takeAction(List<Percept> percepts) {
+      public List<GameAction> takeAction(WumpusWorld world) {
         return List.of(new GrabTheGold(this));
       }
     });
